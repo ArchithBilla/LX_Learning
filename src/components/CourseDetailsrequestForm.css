@@ -1,0 +1,101 @@
+/* Container for the form */
+.form-container {
+    display: flex;
+    justify-content: flex-end; /* Align form to the right */
+    align-items: center; /* Center vertically */
+    padding: 10px; /* Reduce padding */
+    height: 100vh;
+    background: url("../assests/images/know_more.jpg") no-repeat center center;
+    background-size: cover;
+  }
+  
+/* Right section for the form */
+.form-right {
+    width: 50%; /* 60% width of the container */
+    max-height: 97%; /* Ensure the form doesn't exceed 90% of the viewport height */
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px; /* Reduced padding inside the form */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow-y: auto;
+}
+
+/* Row for multiple fields in a single row */
+.form-row {
+    display: flex;
+    gap: 12px; /* Uniform gap between fields in the same row */
+    width: 100%; /* Ensure rows take up full width */
+}
+
+/* Individual form group */
+.form-group {
+    margin-bottom: 12px; /* Reduce spacing between fields vertically */
+    flex: 1; /* All fields in a row take equal space */
+}
+
+/* Form labels */
+.form-group label {
+    font-size: 0.85rem; /* Reduce font size for labels */
+    margin-bottom: 6px; /* Reduce space below the label */
+    display: block;
+    color: #333;
+}
+
+/* Input, Select, and Textarea fields */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Ensure inputs take up the full width of their container */
+    padding: 10px; /* Reduce padding inside the input fields */
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+/* Textarea specific styling */
+.form-group textarea {
+    resize: none; /* Disable resizing */
+}
+
+/* Submit button */
+.form-button {
+    width: 95%;
+    padding: 10px; /* Reduced padding for the button */
+    margin-left: 20px;
+    font-size: 0.9rem; /* Reduced font size for the button */
+    background-color:  #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effect */
+}
+
+/* Hover effect for the button */
+.form-button:hover {
+    background-color:  #4caf50; /* Slightly darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 4px 8px  #4caf50; /* Add shadow effect on hover */
+}
+
+/* Add styles for error messages */
+.error {
+    font-size: 0.75rem; /* Smaller font size */
+    color: red; /* Red color for errors */
+    margin-top: 5px; /* Small spacing above error message */
+  }
+  
+  .styled-heading {
+    font-size: 1.4rem; /* Large font size */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Neutral color for the main text */
+    text-align: center; /* Center the text */
+    margin-bottom: 20px; /* Space below the heading */
+  }
+  
+  .styled-heading span {
+    color: #4caf50; /* Highlight color for the course name */
+    font-weight: bold; /* Make the course name bold */
+  }
+  

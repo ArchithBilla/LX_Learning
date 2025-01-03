@@ -1,0 +1,339 @@
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #333; /* Neutral text color */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+
+.courses-page {
+  width: 96%;
+  margin: 2% auto; /* Center with equal spacing on all sides */
+  padding: 20px;
+  background-color: #ffffff; /* White for clean monotone look */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 95vh; /* Slightly smaller than viewport */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; /* Light background */
+  border: 1px solid #e3e4e6; /* Subtle border */
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%; /* Full width */
+  box-sizing: border-box;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: rgb(55, 65, 81);
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: rgb(150, 150, 150); /* Softer placeholder color */
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  gap: 20px;
+  height: 100%; /* Full height */
+  overflow: hidden; /* Prevent scrolling of entire content */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px; /* Fixed width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Prevent global scrolling in the sidebar */
+  position: sticky; /* Sticky position for the sidebar */
+  top: 0; /* Align at the top */
+  background-color: #ffffff;
+  border: 1px solid #e3e4e6; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Sidebar Sections */
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-section h3 {
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(60, 60, 60); /* Darker heading text */
+  margin-bottom: 10px;
+}
+
+/* Scrollable Section */
+.scrollable-section {
+  max-height: 130px; /* Fixed height for scrollable sections */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 5px;
+}
+
+.scrollable-section::-webkit-scrollbar {
+  width: 6px; /* Narrow scrollbar width */
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Subtle thumb color */
+  border-radius: 4px;
+}
+
+.scrollable-section::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Light track color */
+}
+
+/* List Items */
+.sidebar-section ul {
+  list-style: none; /* Remove list dots */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-section ul li {
+  display: flex;
+  align-items: center;
+  padding: 8px 5px; /* Add spacing for readability */
+  margin-bottom: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-section ul li:hover {
+  background-color: #f0f4f8; /* Light hover effect */
+}
+
+/* Checkbox Styling */
+.sidebar-section input[type="checkbox"] {
+  appearance: none; /* Remove default styling */
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-section input[type="checkbox"]:checked {
+  background-color: #4caf50; /* Checked background */
+  border-color: #4caf50; /* Match border color */
+  color: white;
+}
+
+.sidebar-section input[type="checkbox"]:checked::after {
+  content: "✔";
+  display: block;
+  text-align: center;
+  line-height: 16px;
+  color: white;
+  font-size: 14px;
+}
+
+/* Reset Filters Button */
+.reset-filters-button {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: sticky;
+  bottom: 0; /* Stick to the bottom of the sidebar */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow at the top */
+  z-index: 10; /* Ensure it stays above other content */
+}
+
+.reset-filters-button:hover {
+  background-color: #45a049;
+}
+
+.reset-filters-button:active {
+  background-color: #3e8e41;
+}
+
+/* Courses Section */
+.courses {
+  width: 80%; /* Adjust courses section width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Course Cards */
+.course-card {
+  background-color: #f9fafb; /* Light monotone background */
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e3e4e6; /* Subtle border */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03); /* Subtle shadow */
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly stronger hover shadow */
+}
+
+.course-card.expanded {
+  background-color: #e9eef5; /* Slightly darker background when expanded */
+}
+
+/* Course Header */
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-header h2 {
+  font-size: 18px;
+  color: rgb(45, 45, 45); /* Consistent darker text */
+}
+
+.toggle-icon {
+  font-size: 20px;
+  color: rgb(100, 100, 100); /* Subtle icon color */
+}
+
+/* Course Details */
+.course-details {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(55, 65, 81);
+  line-height: 1.5;
+}
+
+.course-details p {
+  margin: 5px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Makes the label clickable */
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.checkbox-label:hover {
+  background-color: #f0f4f8; /* Light hover effect */
+}
+
+.know-more-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.know-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.categories-container {
+  display: flex;
+  align-items: center;
+  overflow-x: auto; /* Makes the container scrollable horizontally */
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 2px solid #f0f0f0; /* Light border under the categories */
+  overflow-y :hidden
+}
+
+.category-tab {
+  flex: 0 0 auto; /* Prevent the buttons from shrinking or growing */
+  width: 250px; /* Uniform width for all buttons */
+  height: 35px; /* Uniform height for all buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd; /* Light border around each button */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #f8f8f8;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.category-tab.active,
+.category-tab:hover {
+  background-color: #4caf50; /* Highlight color for active/hover state */
+  color: #fff;
+  border-color: #4caf50;
+}
+
+/* Add a scrollbar for horizontal scrolling */
+.categories-container::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+
+.categories-container::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+.categories-container::-webkit-scrollbar-track {
+  background-color: #f9f9f9; /* Color of the scrollbar track */
+}
+
+.results-count {
+  font-size: 0.8rem;
+  color:#4caf50;
+  margin-bottom: 5px;
+  margin-right: 2px;
+  font-weight: bold;
+}
+
+.filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

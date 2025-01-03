@@ -1,0 +1,163 @@
+import React, { useState } from "react";
+import {
+  Container,
+  Box,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import "./Home.css";
+import HeroSectionImage from "../assests/images/Home_Section_1.png";
+import IndustryLedTrainingImage from "../assests/images/Industry_led_Training.png";
+import LearningEnvironmentsImage from "../assests/images/Learning_Environments.png";
+import PeopleSolutionsImage from "../assests/images/People_Solutions.png";
+
+const contentMap = {
+  "Human Capital Solutions": {
+    heading: "Human Capital Solutions",
+    image: PeopleSolutionsImage,
+    buttonLabel: "View details",
+  },
+  "Instructor Led Training": {
+    heading: "",
+    points: [
+      "Interactive Learning: Encourages active participation through discussions and hands-on activities.",
+      "Immediate Feedback: Provides real-time responses to enhance understanding.",
+      "Personalized Attention: Adapts content to individual needs and learning styles.",
+      "Collaborative Environment: Fosters teamwork and idea exchange among learners.",
+    ],
+    description:
+      "Instructor-Led Training (ILT) involves real-time instruction by an expert, delivered in person (ILT), virtually (VILT), or through a blended (ILT+VILT) approach. This method promotes interactive learning, immediate feedback, personalized instruction, and collaborative discussions.",
+    image: IndustryLedTrainingImage,
+    buttonLabel: "Explore our wide range of courses",
+  },
+  "Learning Environments": {
+    heading: "On-Demand Virtual Labs",
+    description:
+      "Our on-demand virtual labs provide flexible, hands-on learning experiences accessible anytime, anywhere. Designed to fit within your schedule and budget, these labs offer safe practical training environments that enhance skill development and knowledge application.",
+    points: [], // Keeping this empty as the image doesn't have a bullet point list.
+    image: LearningEnvironmentsImage,
+    buttonLabel: "View details",
+  },
+};
+
+function Home() {
+  const [activeButton, setActiveButton] = useState("Human Capital Solutions");
+
+  const buttons = Object.keys(contentMap);
+
+  return (
+    <div className="Home_Section">
+      {/* Hero Section */}
+      <Container className="hero-section">
+        <img
+          src={HeroSectionImage}
+          alt="LX Learning Hero Section"
+          className="hero-image"
+        />
+      </Container>
+
+      {/* Buttons Section */}
+      <Container className="button-section">
+        <Box className="button-container">
+          {buttons.map((button) => (
+            <Button
+              key={button}
+              variant={activeButton === button ? "contained" : "outlined"}
+              color={activeButton === button ? "primary" : "inherit"}
+              onClick={() => setActiveButton(button)}
+              className={`button-card ${
+                activeButton === button ? "active" : ""
+              }`}
+              sx={{ textTransform: "none" }}
+            >
+              {button}
+            </Button>
+          ))}
+        </Box>
+      </Container>
+
+      {/* Content Section */}
+      <Container className="content-section">
+        {activeButton === "Human Capital Solutions" ? (
+          // Single section for "People Solutions"
+          <Box className="single-image-container">
+            <Box className="vertical-container">
+              <img
+                src={contentMap[activeButton].image}
+                alt={contentMap[activeButton].heading}
+                className="full-width-image"
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                className="centered-button"
+                sx={{backgroundColor : "#0DAFFC"}}
+              >
+                {contentMap[activeButton].buttonLabel}
+              </Button>
+            </Box>
+          </Box>
+        ) : (
+          // Two sections side by side for other buttons
+          <Box className="two-column-container">
+            {/* Left Section: Text */}
+            <Box className="text-section">
+              <Typography variant="h4" className="content-heading">
+                {contentMap[activeButton].heading}
+              </Typography>
+              <Typography variant="body1" className="content-body">
+                {contentMap[activeButton].description}
+              </Typography>
+              < span style={{fontSize : "20px", fontWeight : "100", padding: "0 !important"}}>Benefits: </span>
+              <List>
+                {contentMap[activeButton].points.map((point, index) => {
+                  const [boldText, ...restText] = point.split(":"); // Split the heading and the description
+                  return (
+                    <ListItem
+                      key={index}
+                      sx={{
+                        display: "list-item",
+                        listStyleType: "disc",
+                        paddingLeft: "5px",
+                        paddingBottom: "0px",
+                        paddingTop: "0px"
+
+                      }}
+                    >
+                      <ListItemText
+                        primary={
+                          <Typography component="span">
+                            <strong>{boldText}:</strong> {restText.join(":")}
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                  );
+                })}
+              </List>
+              <Box sx={{ marginTop: "1rem" }}>
+                <Button variant="contained" color="primary" sx={{backgroundColor : "#0DAFFC"}}>
+                  {contentMap[activeButton].buttonLabel}
+                </Button>
+              </Box>
+            </Box>
+
+            {/* Right Section: Image */}
+            <Box className="image-section">
+              <img
+                src={contentMap[activeButton].image}
+                alt={contentMap[activeButton].heading}
+                className="responsive-image"
+              />
+            </Box>
+          </Box>
+        )}
+      </Container>
+    </div>
+  );
+}
+
+export default Home;

@@ -1,0 +1,177 @@
+/* Hero Section Styling */
+/* Reset margin and padding for the entire document */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+
+}
+
+
+.hero-section {
+    margin-top: 0px !important;
+    background-color: #ffffff !important; /* Optional background color */
+    display: flex !important; /* Enable flexbox layout */
+    justify-content: center !important; /* Center content horizontally */
+    align-items: center !important; /* Center content vertically */
+    width: 100% !important; /* Occupy the full width of the viewport */
+    max-width: 100vw !important; /* Prevent overflow on very wide screens */
+    height: 400px !important; /* Adjust the height for more vertical space */
+    padding: 0 !important; /* Remove padding for consistency */
+    box-sizing: border-box !important; /* Include padding and borders in size */
+    margin-bottom: 5% !important;
+}
+
+/* Image Styling */
+.hero-image {
+    margin-top: 0px !important;
+    display: block !important; /* Ensures proper rendering of the image */
+    width: 94% !important; /* Occupy the full width of the viewport */
+    max-width: 100vw !important; /* Prevent overflow on very wide screens */
+    object-fit: contain !important; /* Ensure the image fits within its container */
+    box-sizing: border-box !important; /* Include padding in size calculations */
+    padding: 0 !important; /* Remove padding for consistency */
+
+}
+
+.button-section {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin-top: 2% !important;
+}
+
+.button-container {
+    display: flex !important;
+    gap:10px;
+    align-items: center !important;
+    width: 100% !important; /* Take full width */
+    max-width: 1200px !important; /* Optional: limit width for larger screens */
+    box-sizing: border-box !important;
+    margin: 0px 38px;
+}
+
+.button-card {
+    font-family: "Nunito", sans-serif !important;
+    font-size: 24px !important;
+    line-height: 30px !important;
+    border-radius: 10px !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+    text-align: center !important;
+    padding: 15px !important;
+    background-color: #F1F1F1 !important;
+    color: #0056C3 !important;
+    border: none !important; /* Remove the border */
+    width: 33% !important;
+    height: 90px !important;
+
+}
+
+.button-card.MuiButton-containedPrimary {
+    background-color: #b3e5fc !important; /* Light blue background */
+    color: #0056c3 !important; /* Text color */
+    border: none !important; /* Ensure no border */
+    box-shadow: 0px 2px 4px rgba(0, 86, 195, 0.4) !important; /* Floating shadow */
+    border-bottom: 1.5px solid #0056c3 !important; /* Add border to the bottom */
+    border-radius: 10px !important; /* Rounded corners */
+    font-weight: 750 !important;
+
+}
+
+/* Hover Effect */
+.button-card.MuiButton-containedPrimary:hover {
+    transform: translateY(-1px) !important; /* Slight lift effect */
+    box-shadow: 0px 8px 10px rgba(0, 86, 195, 0.5) !important; /* Slightly darker shadow on hover */
+}
+/* Content Section */
+.content-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px; /* Set a fixed minimum height for consistency */
+    box-sizing: border-box !important;
+  }
+  
+  /* Two-column layout */
+  .two-column-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%; /* Ensure the container fills the height */
+    align-items: center; /* Center content vertically */
+    padding-top: 20px !important;
+  }
+  
+  /* Text Section */
+  .text-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Ensure text section fills the height */
+  }
+  
+  .content-heading {
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .content-body{
+    color:#0056C3 !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+  }
+  
+  .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure image section fills the height */
+  }
+  
+  .single-image-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -180px;
+  }
+  
+  /* Vertical container to align image and button */
+  .vertical-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  
+ /* Image styling */
+.full-width-image {
+    max-width: 100% !important;
+    height: auto;
+  }
+  
+  /* Button styling */
+  .centered-button {
+    text-transform: none;
+    margin-top: -105px !important;
+    color: white !important;
+    border: none !important;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  /* Image styling for two-column layout */
+  .responsive-image {
+    max-width: 100%;
+    max-height: 100%; /* Ensure the image scales to fit within the container */
+    height: auto;
+    border-radius: 8px;
+  }
+  

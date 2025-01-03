@@ -1,0 +1,99 @@
+/* ContactUs.css */
+
+@import "@font/nunito";
+
+.contact-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: #223D4BE5;
+  }
+  
+  .contact-us-text {
+    flex: 1;
+    min-width: 300px;
+    color: #F1F1F1;
+    font-weight: 500;
+    font-size: 16px;
+
+
+  }
+  
+  .contact-us-text h4 {
+    font-size: 1.8rem;
+    color: #82DCFF;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif !important;
+    ;
+    
+  }
+  
+  .contact-us-text ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contact-us-text li {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .contact-us-form {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .MuiInputBase-root {
+    background-color: white;
+}
+  
+.textfield .MuiOutlinedInput-root {
+    height: 45px !important; /* Set the desired height */
+    align-items: center; /* Align content properly */
+  }
+  
+.form-heading{
+    background-color: #223D4BE5;
+    padding: 10px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    color:#ffffff ;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: var(--fontFamily-nunito);
+}
+
+/* Ensure the label stays above and transitions correctly */
+.MuiInputLabel-outlined {
+    transform: translate(14px, 16px) scale(1); /* Initial label position */
+    transition: all 0.2s ease;
+    z-index: 1; /* Ensure it stays above the input field */
+  }
+  
+  .MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(14px, -6px) scale(0.75); /* Label moves up when focused or filled */
+  }
+  
+  /* Adjust the border to prevent mixing with the label */
+  .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: #ccc; /* Default border color */
+    }
+    &:hover fieldset {
+      border-color: #000; /* Border color on hover */
+    }
+    &.Mui-focused fieldset {
+      border-color: #1976d2; /* Border color on focus */
+    }
+  }
+  
+  /* Padding adjustments for proper spacing */
+  .MuiOutlinedInput-input {
+    padding: 16.5px 14px; /* Ensure input text aligns correctly */
+  }

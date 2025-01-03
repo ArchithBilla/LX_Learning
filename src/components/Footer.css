@@ -1,0 +1,62 @@
+/* Footer Container */
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #F1F1F1;
+    font-family: "Nunito", sans-serif;
+    align-items: center;
+  }
+  
+  /* Image Section */
+  .footer-image-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-image {
+    height: 250px;
+    width: 100%;
+    background-image: url("../assests//images/Footer.png");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Contact Section */
+  .footer-contact-section {
+    text-align: center;
+    background-color: #050505CC;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-contact-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #F1F1F1;
+    font-size: 20px;
+  }
+  
+  .footer-contact-text {
+    font-size: 1rem;
+  }
+  
+  /* Disclaimer Section */
+  .footer-disclaimer-section {
+    width: 80%;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 1rem;
+  }
+  
+  .footer-disclaimer-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #00243C;
+  }
+  

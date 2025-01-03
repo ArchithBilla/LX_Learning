@@ -1,0 +1,191 @@
+/* Fullscreen Image Section */
+.fullscreen-image {
+    background-image: url("../assests/images/HumanCapitalSolutions.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 75vh;
+    position: relative;
+  }
+  
+  .floating-text {
+    position: absolute;
+    bottom: 35%;
+    left: 25%;
+    transform: translateX(-50%);
+    text-align: left;
+    color: #0056c3;
+    background: #ffffffe5; /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  .floating-title {
+    font-size: 44px !important;
+    font-family: sans-serif !important;
+  }
+  
+  .floating-subtitle {
+    color: #0056c3 !important;
+    font-weight: 600 !important;
+    font-size: 42px !important;
+    width: 560px !important;
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    background-color: #f7fcff;
+    margin: 4% 2.5% !important;
+    padding: 10px !important;
+  }
+  
+  .stats-img {
+    position: relative;
+    width: 75%;
+    height: 20vh;
+    background-image: url("../assests/images/HumanCapitalSolutionsSection_2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    left: 10%;
+  }
+  
+  /* Button Section */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+    margin-left: 10%;
+  }
+  
+  .custom-button {
+    font-family: "Nunito", sans-serif !important;
+    font-size: 24px !important;
+    line-height: 30px !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    padding: 15px !important;
+    background-color: #f1f1f1 !important;
+    color: #0056c3 !important;
+    border: none !important;
+    width: 50% !important;
+    height: 80px !important;
+  }
+  
+  .custom-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 12px 20px rgba(0, 86, 195, 0.5);
+  }
+  
+  .custom-button.active {
+    background-color: #b3e5fc !important;
+    color: #0056c3 !important;
+    border-bottom: 1.5px solid #0056c3 !important;
+    font-weight: 750 !important;
+  }
+  
+  /* Section 4: Image Section */
+  .image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0; 
+    padding: 0; 
+
+  }
+  
+  .align-assess-img,
+  .empower-develop-img {
+    width: 80%; /* Make each container take up full screen width */
+    text-align: center;
+  }
+  
+  .section-image {
+    width: 85%; /* Make the image take up full screen width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0; /* Remove rounded corners for a full-width effect */
+    box-shadow: none; /* Remove shadow for a clean look */
+    margin-top: -6% !important;
+
+
+}
+  
+  .image-caption {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0056c3;
+    text-transform: uppercase; /* Optional: Make captions uppercase for emphasis */
+  }
+
+  .empower-develop-img {
+    border-top: 2px dashed #b8d0f0; /* Adjust the color and width as needed */
+    margin-top: -12% !important;
+  }
+  
+  
+  .why-choose-us-section {
+    background-color: #f7fcff;
+    padding: 15px;
+    margin: 4% 2.5%;
+    margin-top: -12% !important;
+  }
+  
+  .content-box {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Nunito", sans-serif !important;
+margin-left: 17% !important;
+  }
+  
+  .section-heading {
+    font-size: 24px !important;
+    font-weight: normal !important;
+    color: #000;
+    margin-bottom: 20px;
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  .benefits-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .benefits-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 100 !important ;
+  }
+  
+  .cta-text {
+    color: #0056c3;
+    font-size: 16px;
+    margin-bottom: 20px !important;
+    font-weight: bold !important;
+  }
+  
+  .cta-button-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .cta-button {
+    background-color: #0DAFFC !important;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px !important;
+    border-radius: 6px;
+    text-transform: none;
+  }
+  
+  .cta-button:hover {
+    background-color: #0DAFFC;
+  }
+  
