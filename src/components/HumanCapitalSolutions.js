@@ -74,6 +74,29 @@ function HumanCapitalSolutions() {
           </Typography>
         </Box>
       )}
+      
+      <Box className="industries-section">
+        <Typography variant="h4" className="industries-heading">
+          Industries We Empower:
+        </Typography>
+        <Box className="industries-tags">
+          {[
+            "Technology",
+            "Government",
+            "Finance",
+            "Retail",
+            "Construction",
+            "Manufacturing",
+            "Transportation / Logistics",
+            "Services",
+            "Utilities & Energy",
+          ].map((industry, index) => (
+            <Box key={index} className="industry-tag">
+              {industry}
+            </Box>
+          ))}
+        </Box>
+      </Box>
 
       {/* Section 5 */}
       <Box className="why-choose-us-section">

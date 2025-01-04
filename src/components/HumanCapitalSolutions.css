@@ -130,62 +130,102 @@
   
   .why-choose-us-section {
     background-color: #f7fcff;
-    padding: 15px;
-    margin: 4% 2.5%;
-    margin-top: -12% !important;
+    padding: 10px;
+    margin: 4% auto;
   }
   
   .content-box {
+    display: flex;
+    flex-direction: column;
     text-align: left;
     max-width: 800px;
-    margin: 0 auto;
-    font-family: "Nunito", sans-serif !important;
-margin-left: 17% !important;
-  }
+    margin: 1% auto;
+    width: 50% !important;
+    }
   
   .section-heading {
-    font-size: 24px !important;
-    font-weight: normal !important;
-    color: #000;
+    font-size: 28px !important;
+    font-weight: 500 !important;
     margin-bottom: 20px;
     font-family: "Nunito", sans-serif !important;
   }
   
   .benefits-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column ;
+    align-items: flex-start !important;
+    justify-content:flex-start !important;
+    margin :1% 0.1% !important;
     color: #333;
   }
   
   .benefits-list li {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
-    font-weight: 100 !important ;
+    line-height: 0.8;
   }
   
   .cta-text {
     color: #0056c3;
-    font-size: 16px;
-    margin-bottom: 20px !important;
+    font-size: 14px !important;
+    margin-bottom: 1% !important;
     font-weight: bold !important;
   }
   
-  .cta-button-container {
-    display: flex;
-    justify-content: flex-start;
-  }
-  
+
   .cta-button {
     background-color: #0DAFFC !important;
     color: #fff;
     font-size: 16px;
-    padding: 10px 20px !important;
-    border-radius: 6px;
+    border-radius: 8px !important;
     text-transform: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
   }
   
   .cta-button:hover {
-    background-color: #0DAFFC;
+    background-color: #003e8a !important;
+    transform: translateY(-2px);
   }
+  
+
+
+  .industries-section {
+    text-align: center;
+    padding: 40px;
+    margin-top: -18%;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: -6%;
+
+  }
+  
+  .industries-heading {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    margin-bottom: 2% !important;
+  }
+  
+  .industries-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  
+  .industry-tag {
+    background-color: #F1F1F1 !important;
+    border-radius: 20px;
+    padding: 10px 10px;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight:normal !important;
+    font-family:  sans-serif;
+
+  }
+  
+
   

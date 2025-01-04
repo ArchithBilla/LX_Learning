@@ -1,0 +1,132 @@
+.virtual-labs-container {
+    background-color: #ffffff;
+  }
+  
+  .virtual-labs-section {
+   
+  }
+  
+  
+  .section-image {
+    width: 97%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+
+  .benefits-section {
+    margin-left: 6% !important;
+    padding: 40px;
+    width: 80% ;
+  }
+  
+  .benefits-intro {
+    font-size: 25px !important;
+    color: #009FC6; /* Blue color for the intro text */
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    margin-bottom: 20px;
+ 
+  }
+  
+  .benefits-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+    margin-left: -21%;
+    margin-top: 2%;
+    font-family:  sans-serif;
+  }
+  
+  .benefits-column ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;;
+  }
+  
+  .benefits-column ul li {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.2;
+  }
+  
+
+  .virtual-labs-sandbox-section {
+    padding: 20px;
+    background-color: #e9f6ff; /* Light blue background */
+    text-align: center;
+    margin: 3%;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: 300 !important;
+    color: #0056C3;
+    margin-top: 20px !important;
+    font-family: "Nunito", sans-serif !important;
+
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px !important;
+    justify-items: center;
+    margin: 1% 4% !important;
+    padding: 20px !important; /* Padding around the grid */
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between !important; /* Space between items */
+    align-items: center; /* Center-align content */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 35vh; /* Consistent height for all boxes */
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .icon {
+    width: 35px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .grid-title {
+    font-size: 18px;
+    font-weight: bold !important;
+    margin: 10px 0;
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  .grid-description {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .contact-button {
+    background-color: #0056c3;
+    color: white;
+    text-transform: none;
+    border-radius: 4px;
+    margin-top: auto; 
+    align-self: center; /* Center-align button */
+  }
+  
+  .contact-button:hover {
+    background-color: #003e8a;
+  }
+  
+  /* Add spacing between boxes in the grid */
+ 

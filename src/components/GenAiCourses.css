@@ -1,0 +1,141 @@
+.gen-ai-container {
+    padding: 20px;
+  }
+  
+  .full-width-image {
+    width: 100%; /* Make the image take full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Removes any unwanted space below the image */
+  }
+  .gen-ai-fatigue-section {
+    margin: 4% 2.5%; /* Margin around the section */
+    width: 80% !important;
+    margin-left: 8% !important;
+  }
+  
+  .gen-ai-fatigue-content {
+    color: #0056c3; /* Text color */
+    font-size: 24px !important; /* Font size as per the image */
+    line-height: 1.6; /* Line height for better readability */
+    font-weight: 400 !important;
+  }
+    
+
+
+  
+  .root {
+    display: flex;
+    flex-direction: column;
+    padding: 32px; /* 4 * 8px */
+    background-color: #E3DFEB80;
+    align-items: center; /* Center the items vertically */
+  }
+
+  .root-section-4{
+    display: flex;
+    flex-direction: column;
+    padding: 32px; /* 4 * 8px */
+    align-items: center; /* Center the items vertically */  
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%; /* Ensures the container takes full width of the parent */
+  }
+  
+ 
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align children to space between */
+    width: 36%;
+    margin: 0 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Ensure padding for internal spacing */
+  }
+  
+  .card-seaction-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align children to space between */
+    width: 36%;
+    margin: 0 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; 
+    background-color: #EFF3F5 !important;
+  }
+  .icon {
+    align-self: center; /* Center the icon horizontally in the card */
+    margin-bottom: 10px;
+    color: #6200ea;
+    width: 30px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold !important;
+    margin-bottom: 8px;
+    text-align: left;
+    height: 6vh;
+  }
+
+  .title-engineers {
+    font-size: 24px;
+    font-weight: bold !important;
+    margin-bottom: 8px;
+    text-align: left;
+    height: 11vh;
+  }
+  
+  .details-list {
+    font-size: 16px;
+    color: #333;
+    font-weight: 100;
+    font-family: serif;
+    text-align: left;
+    line-height: 1.1;
+    height: 20vh !important;
+  }
+  
+  .details-list-engineers {
+    font-size: 16px;
+    color: #333;
+    font-weight: 100;
+    font-family: serif;
+    text-align: left;
+    line-height: 1.1;
+    height: 35vh !important;
+  }
+  .contactButton {
+    margin-top: auto !important; /* Push the button to the bottom */
+    background-color: #007FFF;
+    color: white;
+    padding: 10px 20px ;
+  }
+  
+
+  .contactButton:hover {
+    background-color: #0059b2;
+  }
+  
+  /* Ensure other styles are properly adjusted as well */
+  
+  .GenAI-section-title {
+    font-size: 28px !important;
+    font-weight: bold !important;
+    color: #0056c3 !important;
+    margin-bottom: 20px !important; /* Add margin for spacing */
+    text-align: center; /* Center the title */
+  }
+  
+  .GenAI-title{
+    font-size: 26px !important ;
+    font-weight: bold !important;
+    color: #00AAFC !important;
+    margin: 2%  33%!important;
+  }
+  
+ 

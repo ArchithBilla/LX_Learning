@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import HumanCapitalSolutions from "./components/HumanCapitalSolutions";
 import InstructorLedTrainings from "./components/InstructorLedTrainings";
 import OnDemandVirtualLabs from "./components/OnDemandVirtualLabs";
+import GenAICourses from "./components/GenAiCourses"; // Import the new component
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/human-capital-solutions" element={<HumanCapitalSolutions />} />
         <Route path="/instructor-led-trainings" element={<InstructorLedTrainings />} />
         <Route path="/on-demand-virtual-labs" element={<OnDemandVirtualLabs />} />
+        <Route path="/gen-ai-courses" element={<GenAICourses />} /> {/* Add new route */}
       </Routes>
       <ContactUs />
       <Footer />

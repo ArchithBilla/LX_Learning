@@ -79,7 +79,7 @@ function Header() {
               </Menu>
             </div>
 
-            <Button color="inherit" href="/genai-courses" className="nav-button">
+            <Button color="inherit" href="/gen-ai-courses" className="nav-button">
               GenAI Courses
             </Button>
             <Button color="inherit" href="/about" className="nav-button">
