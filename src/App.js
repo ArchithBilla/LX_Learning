@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -8,11 +8,16 @@ import HumanCapitalSolutions from "./components/HumanCapitalSolutions";
 import InstructorLedTrainings from "./components/InstructorLedTrainings";
 import OnDemandVirtualLabs from "./components/OnDemandVirtualLabs";
 import GenAICourses from "./components/GenAiCourses"; // Import the new component
+import ScrollToTop from "./components/scrollreset"; // Import the ScrollToTop component
+
 
 function App() {
+  const contactRef = useRef(null); // Create a ref for the ContactUs component
+
   return (
     <Router>
-      <Header />
+            <ScrollToTop /> {/* Add this here */}
+      <Header contactRef={contactRef} /> {/* Pass the ref to the Header */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/human-capital-solutions" element={<HumanCapitalSolutions />} />
@@ -20,7 +25,7 @@ function App() {
         <Route path="/on-demand-virtual-labs" element={<OnDemandVirtualLabs />} />
         <Route path="/gen-ai-courses" element={<GenAICourses />} /> {/* Add new route */}
       </Routes>
-      <ContactUs />
+      <ContactUs ref={contactRef} /> {/* Attach the ref */}
       <Footer />
     </Router>
   );

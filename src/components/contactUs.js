@@ -1,9 +1,9 @@
-// ContactUs.jsx
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import { TextField, Button, MenuItem, Box, Stack } from "@mui/material";
 import "./contactUs.css";
 
-const ContactUs = () => {
+// Wrap the ContactUs component with React.forwardRef
+const ContactUs = forwardRef((props, ref) => {
   const initialFormValues = {
     firstName: "",
     lastName: "",
@@ -19,7 +19,6 @@ const ContactUs = () => {
   };
 
   const [formValues, setFormValues] = useState(initialFormValues);
-
   const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
@@ -37,14 +36,12 @@ const ContactUs = () => {
     const { name, value } = e.target;
 
     if (["firstName", "lastName", "location", "jobTitle"].includes(name)) {
-      // Allow only alphabets for specific fields
       if (/^[a-zA-Z\s]*$/.test(value)) {
         setFormValues({ ...formValues, [name]: value });
         setErrors({ ...errors, [name]: "" });
       }
     } else if (name === "email") {
       setFormValues({ ...formValues, [name]: value });
-      // Validate email format
       if (
         !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value) &&
         value !== ""
@@ -54,7 +51,6 @@ const ContactUs = () => {
         setErrors({ ...errors, email: "" });
       }
     } else if (name === "phoneNumber") {
-      // Allow only numbers and validate length
       if (/^[0-9]*$/.test(value)) {
         setFormValues({ ...formValues, [name]: value });
         if (value.length !== 10 && value.length > 0) {
@@ -73,28 +69,24 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
-
-    // Validate required fields
+    e.preventDefault();
     const newErrors = {};
     Object.keys(formValues).forEach((key) => {
       if (!formValues[key].trim() && key !== "otherSpecificNeeds") {
         newErrors[key] = "This field is required";
       }
     });
-
     setErrors(newErrors);
 
-    // If no errors, display JSON data and clear form fields
     if (Object.keys(newErrors).length === 0) {
       console.log("Form Data:", formValues);
       alert(JSON.stringify(formValues, null, 2));
-      setFormValues(initialFormValues); // Clear form fields
+      setFormValues(initialFormValues);
     }
   };
 
   return (
-    <>
+    <div ref={ref}>
       <h1 className="form-heading">Get in touch</h1>
       <div className="contact-us-container">
         <div className="contact-us-text">
@@ -128,12 +120,7 @@ const ContactUs = () => {
         </div>
 
         <div className="contact-us-form">
-          <Box
-            component="form"
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-          >
+          <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Stack spacing={2}>
               <Stack direction="row" spacing={2}>
                 <TextField
@@ -301,7 +288,7 @@ const ContactUs = () => {
                 sx={{
                   backgroundColor: "#0DAFFC",
                   "&:hover": {
-                    backgroundColor: "#008DCB", // Optional hover color
+                    backgroundColor: "#008DCB",
                   },
                 }}
               >
@@ -311,8 +298,8 @@ const ContactUs = () => {
           </Box>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+});
 
 export default ContactUs;
