@@ -8,6 +8,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Home.css";
 import HeroSectionImage from "../assests/images/Home_Section_1.png";
 import IndustryLedTrainingImage from "../assests/images/Industry_led_Training.png";
@@ -19,6 +20,7 @@ const contentMap = {
     heading: "Human Capital Solutions",
     image: PeopleSolutionsImage,
     buttonLabel: "View details",
+    route: "/human-capital-solutions", // Add route for navigation
   },
   "Instructor Led Training": {
     heading: "",
@@ -37,7 +39,7 @@ const contentMap = {
     heading: "On-Demand Virtual Labs",
     description:
       "Our on-demand virtual labs provide flexible, hands-on learning experiences accessible anytime, anywhere. Designed to fit within your schedule and budget, these labs offer safe practical training environments that enhance skill development and knowledge application.",
-    points: [], // Keeping this empty as the image doesn't have a bullet point list.
+    points: [],
     image: LearningEnvironmentsImage,
     buttonLabel: "View details",
   },
@@ -45,8 +47,16 @@ const contentMap = {
 
 function Home() {
   const [activeButton, setActiveButton] = useState("Human Capital Solutions");
+  const navigate = useNavigate(); // Use useNavigate for routing
 
   const buttons = Object.keys(contentMap);
+
+  const handleButtonClick = () => {
+    const route = contentMap[activeButton].route;
+    if (route) {
+      navigate(route); // Navigate to the specified route
+    }
+  };
 
   return (
     <div className="Home_Section">
@@ -82,7 +92,7 @@ function Home() {
       {/* Content Section */}
       <Container className="content-section">
         {activeButton === "Human Capital Solutions" ? (
-          // Single section for "People Solutions"
+          // Single section for "Human Capital Solutions"
           <Box className="single-image-container">
             <Box className="vertical-container">
               <img
@@ -94,7 +104,8 @@ function Home() {
                 variant="contained"
                 color="primary"
                 className="centered-button"
-                sx={{backgroundColor : "#0DAFFC"}}
+                onClick={handleButtonClick} // Call handleButtonClick on click
+                sx={{ backgroundColor: "#0DAFFC" }}
               >
                 {contentMap[activeButton].buttonLabel}
               </Button>
@@ -111,7 +122,15 @@ function Home() {
               <Typography variant="body1" className="content-body">
                 {contentMap[activeButton].description}
               </Typography>
-              < span style={{fontSize : "20px", fontWeight : "100", padding: "0 !important"}}>Benefits: </span>
+              <span
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "100",
+                  padding: "0 !important",
+                }}
+              >
+                Benefits:
+              </span>
               <List>
                 {contentMap[activeButton].points.map((point, index) => {
                   const [boldText, ...restText] = point.split(":"); // Split the heading and the description
@@ -123,8 +142,7 @@ function Home() {
                         listStyleType: "disc",
                         paddingLeft: "5px",
                         paddingBottom: "0px",
-                        paddingTop: "0px"
-
+                        paddingTop: "0px",
                       }}
                     >
                       <ListItemText
@@ -139,7 +157,11 @@ function Home() {
                 })}
               </List>
               <Box sx={{ marginTop: "1rem" }}>
-                <Button variant="contained" color="primary" sx={{backgroundColor : "#0DAFFC"}}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ backgroundColor: "#0DAFFC" }}
+                >
                   {contentMap[activeButton].buttonLabel}
                 </Button>
               </Box>
