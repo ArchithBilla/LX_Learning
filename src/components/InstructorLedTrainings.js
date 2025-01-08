@@ -21,7 +21,7 @@ function InstructorLedTrainings() {
     const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
     const [selectedCard, setSelectedCard] = useState(""); // To pass the selected course name to the modal
 
-    const [courses, setCourses] = useState([]); // Courses to display
+    // const [courses, setCourses] = useState([]); // Courses to display
     const [filteredCourses, setFilteredCourses] = useState([]); // Filtered courses
     const [availablePartners, setAvailablePartners] = useState([]); // Partners (brands)
     const [selectedPartners, setSelectedPartners] = useState([]); // Selected filters
@@ -51,14 +51,14 @@ function InstructorLedTrainings() {
                 if (location.state && location.state.searchedData) {
                     const { searchedData, searchTerm } = location.state;
 
-                    setCourses(searchedData); // Populate courses with filtered data
+                    // setCourses(searchedData); // Populate courses with filtered data
                     setFilteredCourses(searchedData); // Show filtered courses
                     setSearchValue(searchTerm); // Reflect search term in local search bar
 
                     // Update categories to highlight based on search data
-                    const searchedCategories = new Set(
-                        searchedData.map((course) => course["Main - Category"])
-                    );
+                    // const searchedCategories = new Set(
+                    //     searchedData.map((course) => course["Main - Category"])
+                    // );
                     // setSelectedCategories(Array.from(searchedCategories)); // Highlight relevant categories
 
                     // Update partners for filtered courses
@@ -68,7 +68,7 @@ function InstructorLedTrainings() {
                     setAvailablePartners(filteredPartners);
                 } else {
                     // Otherwise, set courses to all data
-                    setCourses(data);
+                    // setCourses(data);
 
                     if (categoryArray.length > 0) {
                         // Automatically select the first category
