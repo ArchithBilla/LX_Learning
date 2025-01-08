@@ -49,6 +49,7 @@ const contentMap = {
 };
 
 function Home() {
+  
   const [activeButton, setActiveButton] = useState("Human Capital Solutions");
   const navigate = useNavigate(); // Use useNavigate for routing
 

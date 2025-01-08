@@ -11,47 +11,105 @@ import {
     CardActions,
 } from "@mui/material";
 import InstructorLedTraining from "../assests/images/industryLedTraining.png";
+import { useLocation } from "react-router-dom";
+import ContactUsModal from "./contactUs"
 
 import "./InstructorLedTrainings.css";
 
 function InstructorLedTrainings() {
-    const [categories, setCategories] = useState([]);
-    const [courses, setCourses] = useState([]);
-    const [selectedPartners, setSelectedPartners] = useState([]);
-    const [selectedCategories, setSelectedCategories] = useState([]);
-    const [filteredCourses, setFilteredCourses] = useState([]);
-    const [availablePartners, setAvailablePartners] = useState([]);
+    const [categories, setCategories] = useState([]); // All categories
+    const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
+    const [selectedCard, setSelectedCard] = useState(""); // To pass the selected course name to the modal
+
+    const [courses, setCourses] = useState([]); // Courses to display
+    const [filteredCourses, setFilteredCourses] = useState([]); // Filtered courses
+    const [availablePartners, setAvailablePartners] = useState([]); // Partners (brands)
+    const [selectedPartners, setSelectedPartners] = useState([]); // Selected filters
+    const [selectedCategories, setSelectedCategories] = useState([]); // Selected categories
+    const [searchValue, setSearchValue] = useState(""); // Local search bar value
     const [showCertifications, setShowCertifications] = useState(true);
     const [showTrainings, setShowTrainings] = useState(false);
+    const [fullCourses, setFullCourses] = useState([])
+
+    const location = useLocation(); // Access global search data
 
     useEffect(() => {
-        fetch("/courses.json") // Assuming your JSON data is in the public directory
-            .then((response) => response.json())
-            .then((data) => {
-                const uniqueCategories = new Set();
-                data.forEach((course) => {
-                    uniqueCategories.add(course["Main - Category"]);
-                });
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/courses.json");
+                const data = await response.json();
+
+                setFullCourses(data)
+                // Extract all unique categories
+                const uniqueCategories = new Set(
+                    data.map((course) => course["Main - Category"])
+                );
                 const categoryArray = Array.from(uniqueCategories);
                 setCategories(categoryArray);
-                setCourses(data);
 
-                // Default select the first category
-                if (categoryArray.length > 0) {
-                    handleCategoryClick(categoryArray[0], data);
+                // If search data exists in location.state, use it
+                if (location.state && location.state.searchedData) {
+                    const { searchedData, searchTerm } = location.state;
+
+                    setCourses(searchedData); // Populate courses with filtered data
+                    setFilteredCourses(searchedData); // Show filtered courses
+                    setSearchValue(searchTerm); // Reflect search term in local search bar
+
+                    // Update categories to highlight based on search data
+                    const searchedCategories = new Set(
+                        searchedData.map((course) => course["Main - Category"])
+                    );
+                    // setSelectedCategories(Array.from(searchedCategories)); // Highlight relevant categories
+
+                    // Update partners for filtered courses
+                    const filteredPartners = Array.from(
+                        new Set(searchedData.map((course) => course.Partner))
+                    );
+                    setAvailablePartners(filteredPartners);
+                } else {
+                    // Otherwise, set courses to all data
+                    setCourses(data);
+
+                    if (categoryArray.length > 0) {
+                        // Automatically select the first category
+                        const firstCategory = categoryArray[0];
+                        setSelectedCategories([firstCategory]); // Set the first category as selected
+                        const filtered = data.filter(
+                            (course) => course["Main - Category"] === firstCategory
+                        );
+                        setFilteredCourses(filtered); // Filter the courses for the first category
+                        const partners = Array.from(
+                            new Set(filtered.map((course) => course.Partner))
+                        );
+                        setAvailablePartners(partners); // Update available partners
+                    } else {
+                        setFilteredCourses(data);
+                    }
                 }
-            })
-            .catch((error) => console.error("Error fetching courses data:", error));
-    }, []);
+            } catch (error) {
+                console.error("Error fetching courses data:", error);
+            }
+        };
 
-    const handleCategoryClick = (category, data = courses) => {
+        fetchData();
+    }, [location.state]);
+
+    const handleContactUsClick = (courseName) => {
+        setSelectedCard(courseName); // Set the selected course name
+        setIsModalOpen(true); // Open the modal
+    };
+
+    const handleCategoryClick = (category) => {
+        setSearchValue(""); // Clear the local search bar when a tag is clicked
+
         if (selectedCategories.includes(category)) {
+
             // Remove category if already selected
             const updatedCategories = selectedCategories.filter((c) => c !== category);
             setSelectedCategories(updatedCategories);
 
             // Update filtered courses and available partners
-            const filtered = data.filter((course) =>
+            const filtered = fullCourses.filter((course) =>
                 updatedCategories.includes(course["Main - Category"])
             );
             setFilteredCourses(filtered);
@@ -62,11 +120,11 @@ function InstructorLedTrainings() {
             // Add category to selection
             const updatedCategories = [...selectedCategories, category];
             setSelectedCategories(updatedCategories);
-
             // Update filtered courses and available partners
-            const filtered = data.filter((course) =>
+            const filtered = fullCourses.filter((course) =>
                 updatedCategories.includes(course["Main - Category"])
             );
+
             setFilteredCourses(filtered);
             setAvailablePartners(
                 Array.from(new Set(filtered.map((course) => course.Partner)))
@@ -90,20 +148,39 @@ function InstructorLedTrainings() {
         }
     };
 
+    const handleLocalSearchChange = (event) => {
+        const value = event.target.value;
+        setSearchValue(value);
+
+        // Filter courses based on search term
+        if (!value) {
+            setFilteredCourses([]);
+        } else {
+            const lowercasedValue = value.toLowerCase();
+            const filtered = fullCourses.filter((course) =>
+                Object.values(course).some((field) =>
+                    String(field).toLowerCase().includes(lowercasedValue)
+                )
+            );
+
+            setFilteredCourses(filtered);
+
+            // Update available partners for the filtered courses
+            const filteredPartners = Array.from(
+                new Set(filtered.map((course) => course.Partner))
+            );
+            setAvailablePartners(filteredPartners);
+        }
+    };
+
     // Filter the displayed courses based on selected partners, categories, and checkboxes
     const displayedCourses = filteredCourses.filter((course) => {
-        if (selectedPartners.length > 0 && !selectedPartners.includes(course.Partner)) {
-            return false;
-        }
-        console.log(!showCertifications && course.Type === "Certification")
-        if (!showCertifications && course.Objective === "Certification") {
-            return false;
-        }
-        if (!showTrainings && course.Objective !== "Certification") {
-            return false;
-        }
+        if (selectedPartners.length > 0 && !selectedPartners.includes(course.Partner)) return false;
+        if (!showCertifications && course.Objective === "Certification") return false;
+        if (!showTrainings && course.Objective !== "Certification") return false;
         return true;
     });
+    
 
     return (
         <Box sx={{ width: "100%", p: 2 }}>
@@ -127,9 +204,8 @@ function InstructorLedTrainings() {
                     {categories.map((category, index) => (
                         <Button
                             key={index}
-                            className={`category-button ${
-                                selectedCategories.includes(category) ? "active" : ""
-                            }`}
+                            className={`category-button ${selectedCategories.includes(category) ? "active" : ""
+                                }`}
                             onClick={() => handleCategoryClick(category)}
                         >
                             {category}
@@ -144,6 +220,8 @@ function InstructorLedTrainings() {
                     variant="outlined"
                     placeholder="Search courses"
                     className="search-bar"
+                    value={searchValue}
+                    onChange={handleLocalSearchChange}
                     sx={{
                         borderRadius: "25px",
                         "& .MuiOutlinedInput-root": {
@@ -186,7 +264,7 @@ function InstructorLedTrainings() {
             {/* Left and Right Sections */}
             <Box sx={{ display: "flex", width: "100%", p: 2 }}>
                 {/* Left Section: Filters */}
-                <Box sx={{ width: "25%", pr: 2 }}>
+                <Box sx={{ width: "35%", pr: 2, borderRight: "1px solid #ccc" }}>
                     <Typography variant="h6" sx={{ mb: 2 }}>
                         Filters
                         <Button
@@ -222,6 +300,7 @@ function InstructorLedTrainings() {
                         />
                     ))}
                 </Box>
+
 
                 {/* Right Section: Cards */}
                 <Box className="courses-section">
@@ -282,15 +361,23 @@ function InstructorLedTrainings() {
                                             color: "#EEFAFF",
                                             fontFamily: "'Nunito', sans-serif",
                                         }}
+                                        onClick={() => handleContactUsClick(course["Course Name"])} // Pass the course name
                                     >
                                         Contact us
                                     </Button>
+
                                 </CardActions>
                             </Card>
                         ))}
                     </Box>
                 </Box>
             </Box>
+            <ContactUsModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)} // Close the modal
+                selectedCard={selectedCard} // Pass the selected course name
+            />
+
         </Box>
     );
 }

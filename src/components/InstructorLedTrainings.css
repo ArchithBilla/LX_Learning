@@ -98,15 +98,15 @@
   .courses-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Ensure only two cards per row */
-    gap: 20px; /* Add spacing between cards */
+    gap: 25px; /* Add spacing between cards */
     margin-top: 20px;
-    width: 80%
+    width: 85%
   }
   
   
   .course-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
     width: 100%;
   }
   

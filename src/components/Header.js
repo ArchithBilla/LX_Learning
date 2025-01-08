@@ -11,10 +11,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import logo from "../assests/images/LX_Learning_logo.png";
 import "./Header.css";
 
-function Header({ contactRef }) {
+function Header({ contactRef, filterBySearch, searchedData }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
 
   const handleMouseEnter = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,6 +30,21 @@ function Header({ contactRef }) {
     setAnchorEl(null);
   };
 
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    filterBySearch(value); // Call the global filtering function
+  };
+
+  const handleSearchSubmit = (event) => {
+    if (event.key === "Enter" && searchTerm.trim() !== "") {
+      navigate("/instructor-led-trainings", {
+        state: { searchedData, searchTerm },
+      });
+      setSearchTerm(""); // Clear the search bar after submitting
+    }
+  };
+  
   const isActive = (path) => location.pathname === path;
 
   const scrollToGetInTouch = () => {
@@ -57,15 +73,14 @@ function Header({ contactRef }) {
           </div>
 
           <div
-            className={`nav-section ${
-              [
-                "/human-capital-solutions",
-                "/instructor-led-trainings",
-                "/on-demand-virtual-labs",
-              ].some((path) => location.pathname.startsWith(path))
-                ? "active"
-                : ""
-            }`}
+            className={`nav-section ${[
+              "/human-capital-solutions",
+              "/instructor-led-trainings",
+              "/on-demand-virtual-labs",
+            ].some((path) => location.pathname.startsWith(path))
+              ? "active"
+              : ""
+              }`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ position: "relative" }}
@@ -103,9 +118,8 @@ function Header({ contactRef }) {
           </div>
 
           <div
-            className={`nav-section ${
-              isActive("/gen-ai-courses") ? "active" : ""
-            }`}
+            className={`nav-section ${isActive("/gen-ai-courses") ? "active" : ""
+              }`}
             onClick={() => navigate("/gen-ai-courses")}
           >
             <Button color="inherit" className="nav-button">
@@ -113,7 +127,6 @@ function Header({ contactRef }) {
             </Button>
           </div>
         </div>
-
         <div className="header-search">
           <div className="search-icon-wrapper">
             <SearchIcon />
@@ -122,7 +135,11 @@ function Header({ contactRef }) {
             placeholder="Search courses"
             inputProps={{ "aria-label": "search" }}
             className="search-input"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            onKeyDown={handleSearchSubmit}
           />
+
         </div>
 
         <Button
