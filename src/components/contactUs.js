@@ -9,7 +9,7 @@ import {
     IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import "./ContactUs.css";
+import "./contactUs.css";
 
 const ContactUsModal = ({ isOpen, onClose, selectedCard = false }) => {
     const initialFormValues = {
