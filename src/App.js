@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -21,6 +21,15 @@ const theme = createTheme({
 
 function App() {
   const contactRef = useRef(null); // Create a ref for the GetInTouch component
+
+   useEffect(() => {
+          fetch("/courses.json") // Assuming your JSON data is in the public directory
+              .then((response) => response.json())
+              .then((data) => {
+                  console.log(data)
+              })
+              .catch((error) => console.error("Error fetching courses data:", error));
+      }, []);
 
   return (
     // <ThemeProvider theme={theme}>

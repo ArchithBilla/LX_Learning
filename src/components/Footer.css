@@ -6,6 +6,8 @@
     color: #F1F1F1;
     font-family: "Nunito", sans-serif;
     align-items: center;
+    width: 94% !important;
+    margin-left: 3%;
   }
   
   /* Image Section */
@@ -28,7 +30,7 @@
     text-align: center;
     background-color: #050505CC;
     padding: 20px;
-    width: 100%;
+    width: 97.1%;
     display: flex;
     align-items: center;
     justify-content: center;

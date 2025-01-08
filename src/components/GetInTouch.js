@@ -93,30 +93,33 @@ const GetInTouch = forwardRef((props, ref) => {
           <h4>Partner with LX Learning to empower your workforce with:</h4>
           <ul>
             <li>
-              <strong>Strategic Learning:</strong> Align training programs with
+              <strong>Strategic Learning:</strong> <br/>Align training programs with
               your organizational goals to drive results.
             </li>
             <li>
-              <strong>Future-Ready Teams:</strong> Equip your workforce to lead
+              <strong>Future-Ready Teams:</strong><br/> Equip your workforce to lead
               with confidence in a dynamic, evolving world.
             </li>
             <li>
-              <strong>Tailored Training:</strong> Access 5,000+ curated courses
+              <strong>Tailored Training:</strong><br/> Access 5,000+ curated courses
               to upskill and reskill your team.
             </li>
             <li>
-              <strong>Certification Excellence:</strong> Prepare employees for
+              <strong>Certification Excellence:</strong><br/> Prepare employees for
               100+ industry-recognized certifications with expert guidance.
             </li>
             <li>
-              <strong>Virtual Labs:</strong> Build technical expertise through
+              <strong>Virtual Labs:</strong><br/> Build technical expertise through
               hands-on, risk-free practice.
             </li>
             <li>
-              <strong>Immersive Onboarding:</strong> Seamlessly integrate new
+              <strong>Immersive Onboarding:</strong><br/> Seamlessly integrate new
               talent with project-ready training solutions.
             </li>
           </ul>
+
+          <p>Start your transformation today-reach out to LX Learning!</p>
+
         </div>
 
         <div className="contact-us-form">

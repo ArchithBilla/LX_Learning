@@ -7,6 +7,8 @@
     flex-wrap: wrap;
     gap: 2rem;
     background-color: #223D4BE5;
+    width: 94% !important;
+    margin-left:3%
   }
   
   .contact-us-text {
@@ -15,8 +17,7 @@
     color: #F1F1F1;
     font-weight: 500;
     font-size: 16px;
-
-
+    margin-left:  4%;
   }
   
   .contact-us-text h4 {
@@ -29,6 +30,9 @@
     
   }
   
+  .contact-us-text p{
+    font-weight: 900 !important;
+  }
   .contact-us-text ul {
     list-style-type: none;
     padding: 0;
@@ -67,6 +71,9 @@
     font-weight: 700;
     font-size: 30px;
     font-family: var(--fontFamily-nunito);
+    width: 92.6% !important;
+    margin-left:3%
+
 }
 
 /* Ensure the label stays above and transitions correctly */
