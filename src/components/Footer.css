@@ -27,7 +27,7 @@
   .footer-contact-section {
     text-align: center;
     background-color: #050505CC;
-    padding: 0;
+    padding: 20px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -35,10 +35,14 @@
   }
   
   .footer-contact-title {
-    font-weight: bold;
+
+font-weight:200 !important; 
     margin-bottom: 0.5rem;
     color: #F1F1F1;
     font-size: 20px;
+    font-family: "Rounded Mplus 1c" !important
+
+
   }
   
   .footer-contact-text {
@@ -58,5 +62,7 @@
     font-size: 12px;
     line-height: 1.5;
     color: #00243C;
+    font-weight: 400 !important;
+    font-family:" Rounded Mplus 1c" !important   ;
   }
   

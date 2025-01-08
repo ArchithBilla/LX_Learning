@@ -31,7 +31,7 @@ function Header({ contactRef }) {
 
   const isActive = (path) => location.pathname === path;
 
-  const scrollToContactUs = () => {
+  const scrollToGetInTouch = () => {
     if (contactRef?.current) {
       contactRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -127,7 +127,7 @@ function Header({ contactRef }) {
 
         <Button
           variant="contained"
-          onClick={scrollToContactUs}
+          onClick={scrollToGetInTouch}
           sx={{
             backgroundColor: "#0056C3",
             color: "#ffffff",

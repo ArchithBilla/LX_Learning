@@ -1,0 +1,95 @@
+.modal-container {
+    position: fixed; /* Ensures the modal is fixed in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the modal */
+    width: 644px; /* Fixed width */
+    height: 99vh;
+    background-color: #223D4B; /* Modal background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Consistent padding around the modal */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures even spacing between elements */
+    box-sizing: border-box; /* Includes padding in width/height calculation */
+    overflow-y: scroll;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and close button */
+    align-items: center;
+  }
+  
+  .modal-title {
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 18px; /* Adjust font size for title */
+    color: #ffffff;
+    margin-left: 40% !important
+  }
+  
+  .close-button {
+    color: #f6f7f7 !important;
+    font-size: 20px; /* Adjust size of the close button */
+  }
+  
+  .modal-description {
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 14px;
+    color: #82DCFF;
+    text-align: center;
+    line-height: 1.5;
+    width: 80%;
+    margin-left: 10% !important;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Spacing between fields */
+    flex-grow: 1; /* Fills the remaining space */
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 10px; /* Space between first and last name fields */
+  }
+  
+  .name-fields .form-input {
+    flex: 1; /* Ensures fields take equal width */
+  }
+  
+  .form-input .MuiInputBase-root {
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 38px; /* Uniform height for input fields */
+  }
+  
+  .form-input .MuiInputLabel-root {
+    color: #868686;
+    font-size: 14px; /* Adjust label font size */
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  .form-input .MuiOutlinedInput-root {
+    font-size: 14px; /* Adjust input text font size */
+  }
+  
+  .submit-button {
+    text-transform: none;
+    height: 42px !important; /* Uniform button height */
+    background-color: #0dafcc;
+    font-size: 16px;
+    text-transform: none !important;
+  }
+  
+  .submit-button:hover {
+    background-color: #0c9bb0;
+  }
+  
+  button{
+    text-transform: none !important;
+
+  }

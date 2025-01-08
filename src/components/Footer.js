@@ -13,7 +13,7 @@ const Footer = () => {
       {/* Contact Section */}
       <Box className="footer-contact-section">
         <Typography  className="footer-contact-title">
-          Contact Us: +91 99899 57511 | Support@lxlearning.com
+          <strong>Contact Us:</strong> +91 99899 57511 | Support@lxlearning.com
         </Typography>
       </Box>
 

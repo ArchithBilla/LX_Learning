@@ -34,6 +34,7 @@ const contentMap = {
       "Instructor-Led Training (ILT) involves real-time instruction by an expert, delivered in person (ILT), virtually (VILT), or through a blended (ILT+VILT) approach. This method promotes interactive learning, immediate feedback, personalized instruction, and collaborative discussions.",
     image: IndustryLedTrainingImage,
     buttonLabel: "Explore our wide range of courses",
+    route: "/instructor-led-trainings", 
   },
   "Learning Environments": {
     heading: "On-Demand Virtual Labs",
@@ -42,6 +43,8 @@ const contentMap = {
     points: [],
     image: LearningEnvironmentsImage,
     buttonLabel: "View details",
+    route: "/on-demand-virtual-labs", 
+
   },
 };
 
@@ -78,9 +81,8 @@ function Home() {
               variant={activeButton === button ? "contained" : "outlined"}
               color={activeButton === button ? "primary" : "inherit"}
               onClick={() => setActiveButton(button)}
-              className={`button-card ${
-                activeButton === button ? "active" : ""
-              }`}
+              className={`button-card ${activeButton === button ? "active" : ""
+                }`}
               sx={{ textTransform: "none" }}
             >
               {button}
@@ -111,29 +113,40 @@ function Home() {
               </Button>
             </Box>
           </Box>
-        ) : (
-          // Two sections side by side for other buttons
+        ) : activeButton === "Instructor Led Training" ? (
+          // Updated section for "Instructor Led Training"
           <Box className="two-column-container">
             {/* Left Section: Text */}
             <Box className="text-section">
-              <Typography variant="h4" className="content-heading">
+              <Typography
+                sx={{
+                  fontFamily: '"Nunito", sans-serif',
+                  fontWeight: 600,
+                  marginBottom: "12rem",
+                }}>
                 {contentMap[activeButton].heading}
               </Typography>
-              <Typography variant="body1" className="content-body">
-                {contentMap[activeButton].description}
-              </Typography>
-              <span
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "100",
-                  padding: "0 !important",
+              <Typography
+                variant="body1"
+                className="content-body"
+                sx={{
+                  fontFamily: '"Nunito", sans-serif',
+                  fontWeight: "800 !important", // Increase fontWeight here
+                  marginBottom: "1rem",
                 }}
               >
+                {contentMap[activeButton].description}
+              </Typography>
+
+              <Typography variant="h6" sx={{
+                fontFamily: '"Nunito", sans-serif',
+                fontWeight: "var(--fontWeight-nunito-regular)",
+              }}>
                 Benefits:
-              </span>
+              </Typography>
               <List>
                 {contentMap[activeButton].points.map((point, index) => {
-                  const [boldText, ...restText] = point.split(":"); // Split the heading and the description
+                  const [boldText, ...restText] = point.split(":");
                   return (
                     <ListItem
                       key={index}
@@ -147,7 +160,10 @@ function Home() {
                     >
                       <ListItemText
                         primary={
-                          <Typography component="span">
+                          <Typography component="span" sx={{
+                            fontFamily: '"Nunito", sans-serif',
+                            fontWeight: "300",
+                          }}>
                             <strong>{boldText}:</strong> {restText.join(":")}
                           </Typography>
                         }
@@ -156,15 +172,15 @@ function Home() {
                   );
                 })}
               </List>
-              <Box sx={{ marginTop: "1rem" }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ backgroundColor: "#0DAFFC" }}
-                >
-                  {contentMap[activeButton].buttonLabel}
-                </Button>
-              </Box>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{  backgroundColor: "#0DAFFC", width:'300px', fontWeight:400, textTransform:"none"}}
+                onClick={handleButtonClick} // Call handleButtonClick on click
+
+              >
+                {contentMap[activeButton].buttonLabel}
+              </Button>
             </Box>
 
             {/* Right Section: Image */}
@@ -176,7 +192,56 @@ function Home() {
               />
             </Box>
           </Box>
-        )}
+        ) :activeButton === "Learning Environments" ? (
+          // Two sections for "Learning Environments"
+          <Box className="two-column-container">
+            {/* Left Section: Text */}
+            <Box className="text-section">
+                <Typography
+                variant="body1"
+                className="content-body"
+                sx={{
+                  fontFamily: '"Nunito", sans-serif',
+                  fontWeight: "",
+                  fontSize: "18px",
+                  marginBottom: "1.5rem",
+                  lineHeight: "1.6",
+                  color: "#333", // Neutral dark text color
+                }}
+              >
+                {contentMap[activeButton].description}
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={handleButtonClick} // Call handleButtonClick on click
+                sx={{
+                  backgroundColor: "#0DAFFC", // Button color
+                  fontFamily: '"Nunito", sans-serif',
+                  fontWeight: 500,
+                  fontSize: "16px",
+                  textTransform: "none",
+                  borderRadius: "5px",
+                  boxShadow: "none",
+                }}
+              >
+                {contentMap[activeButton].buttonLabel}
+              </Button>
+            </Box>
+        
+            {/* Right Section: Image */}
+            <Box className="image-section">
+              <img
+                src={contentMap[activeButton].image}
+                alt={contentMap[activeButton].heading}
+                className="responsive-image"
+                style={{
+                  maxWidth: "100%",
+                  height: "50vh",
+                }}
+              />
+            </Box>
+          </Box>
+        ) : null}
       </Container>
     </div>
   );

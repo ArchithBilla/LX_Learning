@@ -1,99 +1,93 @@
-/* ContactUs.css */
-
-@import "@font/nunito";
-
-.contact-us-container {
+.modal__container {
+    position: fixed; /* Ensures the modal is fixed in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the modal */
+    width: 644px; /* Fixed width */
+    background-color: #223D4B; /* Modal background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Consistent padding around the modal */
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    background-color: #223D4BE5;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures even spacing between elements */
   }
   
-  .contact-us-text {
-    flex: 1;
-    min-width: 300px;
-    color: #F1F1F1;
-    font-weight: 500;
-    font-size: 16px;
-
-
+  .modal-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and close button */
+    align-items: center;
   }
   
-  .contact-us-text h4 {
-    font-size: 1.8rem;
-    color: #82DCFF;
-    font-weight: 700;
-    font-size: 20px;
+  .modal-title {
     font-family: "Nunito", sans-serif !important;
-    ;
-    
+    font-weight: 900 !important;
+    font-size: 18px; /* Adjust font size for title */
+    color: #ffffff;
+    margin-left: 40% !important
   }
   
-  .contact-us-text ul {
-    list-style-type: none;
-    padding: 0;
+  .close-button {
+    color: #f6f7f7 !important;
+    font-size: 20px; /* Adjust size of the close button */
   }
   
-  .contact-us-text li {
-    margin: 0.5rem 0;
-    font-size: 1rem;
+  .modal-description {
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 14px;
+    color: #82DCFF;
+    text-align: center;
     line-height: 1.5;
+    width: 80%;
+    margin-left: 10% !important;
+    margin-top: 1% !important;
   }
   
-  .contact-us-form {
-    flex: 1;
-    min-width: 300px;
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-
-  .MuiInputBase-root {
-    background-color: white;
-}
-  
-.textfield .MuiOutlinedInput-root {
-    height: 45px !important; /* Set the desired height */
-    align-items: center; /* Align content properly */
-  }
-  
-.form-heading{
-    background-color: #223D4BE5;
-    padding: 10px;
-    margin-bottom: 0;
+  .form-container {
     display: flex;
-    align-items: baseline;
-    justify-content: center;
-    color:#ffffff ;
-    font-weight: 700;
-    font-size: 30px;
-    font-family: var(--fontFamily-nunito);
-}
+    flex-direction: column;
+    gap: 12px; /* Spacing between fields */
+    flex-grow: 1; /* Fills the remaining space */
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 10px; /* Space between first and last name fields */
+  }
+  
+  .name-fields .form-input {
+    flex: 1; /* Ensures fields take equal width */
+  }
+  
+  .form-input .MuiInputBase-root {
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 38px; /* Uniform height for input fields */
+  }
+  
+  .form-input .MuiInputLabel-root {
+    color: #868686;
+    font-size: 14px; /* Adjust label font size */
+    font-family: "Nunito", sans-serif !important;
+  }
+  
+  .form-input .MuiOutlinedInput-root {
+    font-size: 14px; /* Adjust input text font size */
+  }
+  
+  .submit-button {
+    text-transform: none;
+    height: 42px !important; /* Uniform button height */
+    background-color: #0dafcc;
+    font-size: 16px;
+    text-transform: none !important;
+  }
+  
+  .submit-button:hover {
+    background-color: #0c9bb0;
+  }
+  
+  button{
+    text-transform: none !important;
 
-/* Ensure the label stays above and transitions correctly */
-.MuiInputLabel-outlined {
-    transform: translate(14px, 16px) scale(1); /* Initial label position */
-    transition: all 0.2s ease;
-    z-index: 1; /* Ensure it stays above the input field */
-  }
-  
-  .MuiInputLabel-outlined.MuiInputLabel-shrink {
-    transform: translate(14px, -6px) scale(0.75); /* Label moves up when focused or filled */
-  }
-  
-  /* Adjust the border to prevent mixing with the label */
-  .MuiOutlinedInput-root {
-    & fieldset {
-      border-color: #ccc; /* Default border color */
-    }
-    &:hover fieldset {
-      border-color: #000; /* Border color on hover */
-    }
-    &.Mui-focused fieldset {
-      border-color: #1976d2; /* Border color on focus */
-    }
-  }
-  
-  /* Padding adjustments for proper spacing */
-  .MuiOutlinedInput-input {
-    padding: 16.5px 14px; /* Ensure input text aligns correctly */
   }

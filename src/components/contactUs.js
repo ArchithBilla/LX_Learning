@@ -1,305 +1,233 @@
-import React, { useState, forwardRef } from "react";
-import { TextField, Button, MenuItem, Box, Stack } from "@mui/material";
-import "./contactUs.css";
+import React, { useState } from "react";
+import {
+    Modal,
+    Box,
+    Typography,
+    MenuItem,
+    TextField,
+    Button,
+    IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import "./ContactUs.css";
 
-// Wrap the ContactUs component with React.forwardRef
-const ContactUs = forwardRef((props, ref) => {
-  const initialFormValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    location: "",
-    companyName: "",
-    companySize: "",
-    jobTitle: "",
-    jobLevel: "",
-    solutionNeeded: "",
-    otherSpecificNeeds: "",
-  };
+const ContactUsModal = ({ isOpen, onClose, selectedCard = false }) => {
+    const initialFormValues = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        companyName: "",
+        country: "",
+        message: "",
+    };
 
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    location: "",
-    companyName: "",
-    companySize: "",
-    jobTitle: "",
-    jobLevel: "",
-    solutionNeeded: "",
-  });
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [errors, setErrors] = useState({});
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
 
-    if (["firstName", "lastName", "location", "jobTitle"].includes(name)) {
-      if (/^[a-zA-Z\s]*$/.test(value)) {
-        setFormValues({ ...formValues, [name]: value });
-        setErrors({ ...errors, [name]: "" });
-      }
-    } else if (name === "email") {
-      setFormValues({ ...formValues, [name]: value });
-      if (
-        !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value) &&
-        value !== ""
-      ) {
-        setErrors({ ...errors, email: "Invalid email format" });
-      } else {
-        setErrors({ ...errors, email: "" });
-      }
-    } else if (name === "phoneNumber") {
-      if (/^[0-9]*$/.test(value)) {
-        setFormValues({ ...formValues, [name]: value });
-        if (value.length !== 10 && value.length > 0) {
-          setErrors({
-            ...errors,
-            phoneNumber: "Phone number must be 10 digits",
-          });
+        // Validation for specific fields
+        if (["firstName", "lastName"].includes(name)) {
+            if (/^[a-zA-Z\s]*$/.test(value)) {
+                setFormValues({ ...formValues, [name]: value });
+                setErrors({ ...errors, [name]: "" });
+            } else {
+                setErrors({ ...errors, [name]: "Only alphabets are allowed" });
+            }
+        } else if (name === "email") {
+            setFormValues({ ...formValues, [name]: value });
+            if (
+                !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(value) &&
+                value !== ""
+            ) {
+                setErrors({ ...errors, email: "Invalid email format" });
+            } else {
+                setErrors({ ...errors, email: "" });
+            }
+        } else if (name === "phoneNumber") {
+            if (/^[0-9]*$/.test(value)) {
+                setFormValues({ ...formValues, [name]: value });
+                if (value.length !== 10 && value.length > 0) {
+                    setErrors({
+                        ...errors,
+                        phoneNumber: "Phone number must be 10 digits",
+                    });
+                } else {
+                    setErrors({ ...errors, phoneNumber: "" });
+                }
+            }
         } else {
-          setErrors({ ...errors, phoneNumber: "" });
+            setFormValues({ ...formValues, [name]: value });
+            if (!value.trim()) {
+                setErrors({ ...errors, [name]: "This field is required" });
+            } else {
+                setErrors({ ...errors, [name]: "" });
+            }
         }
-      }
-    } else {
-      setFormValues({ ...formValues, [name]: value });
-      setErrors({ ...errors, [name]: "" });
-    }
-  };
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {};
-    Object.keys(formValues).forEach((key) => {
-      if (!formValues[key].trim() && key !== "otherSpecificNeeds") {
-        newErrors[key] = "This field is required";
-      }
-    });
-    setErrors(newErrors);
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Form Data:", formValues);
-      alert(JSON.stringify(formValues, null, 2));
-      setFormValues(initialFormValues);
-    }
-  };
+        const newErrors = {};
+        Object.keys(formValues).forEach((key) => {
+            if (!formValues[key].trim() && key !== "message") {
+                newErrors[key] = "This field is required";
+            }
+        });
 
-  return (
-    <div ref={ref}>
-      <h1 className="form-heading">Get in touch</h1>
-      <div className="contact-us-container">
-        <div className="contact-us-text">
-          <h4>Partner with LX Learning to empower your workforce with:</h4>
-          <ul>
-            <li>
-              <strong>Strategic Learning:</strong> Align training programs with
-              your organizational goals to drive results.
-            </li>
-            <li>
-              <strong>Future-Ready Teams:</strong> Equip your workforce to lead
-              with confidence in a dynamic, evolving world.
-            </li>
-            <li>
-              <strong>Tailored Training:</strong> Access 5,000+ curated courses
-              to upskill and reskill your team.
-            </li>
-            <li>
-              <strong>Certification Excellence:</strong> Prepare employees for
-              100+ industry-recognized certifications with expert guidance.
-            </li>
-            <li>
-              <strong>Virtual Labs:</strong> Build technical expertise through
-              hands-on, risk-free practice.
-            </li>
-            <li>
-              <strong>Immersive Onboarding:</strong> Seamlessly integrate new
-              talent with project-ready training solutions.
-            </li>
-          </ul>
-        </div>
+        setErrors(newErrors);
 
-        <div className="contact-us-form">
-          <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
-            <Stack spacing={2}>
-              <Stack direction="row" spacing={2}>
-                <TextField
-                  className="textfield"
-                  label="First name"
-                  fullWidth
-                  required
-                  variant="outlined"
-                  name="firstName"
-                  value={formValues.firstName}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.firstName)}
-                  helperText={errors.firstName}
-                />
-                <TextField
-                  className="textfield"
-                  label="Last name"
-                  fullWidth
-                  required
-                  variant="outlined"
-                  name="lastName"
-                  value={formValues.lastName}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.lastName)}
-                  helperText={errors.lastName}
-                />
-              </Stack>
-              <TextField
-                className="textfield"
-                label="Email"
-                fullWidth
-                required
-                variant="outlined"
-                name="email"
-                value={formValues.email}
-                onChange={handleInputChange}
-                error={Boolean(errors.email)}
-                helperText={errors.email}
-              />
-              <TextField
-                className="textfield"
-                label="Phone number"
-                fullWidth
-                required
-                variant="outlined"
-                name="phoneNumber"
-                value={formValues.phoneNumber}
-                onChange={handleInputChange}
-                error={Boolean(errors.phoneNumber)}
-                helperText={errors.phoneNumber}
-              />
-              <TextField
-                className="textfield"
-                label="Location"
-                fullWidth
-                required
-                variant="outlined"
-                name="location"
-                value={formValues.location}
-                onChange={handleInputChange}
-                error={Boolean(errors.location)}
-                helperText={errors.location}
-              />
-              <Stack direction="row" spacing={2}>
-                <TextField
-                  className="textfield"
-                  label="Company name"
-                  fullWidth
-                  required
-                  variant="outlined"
-                  name="companyName"
-                  value={formValues.companyName}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.companyName)}
-                  helperText={errors.companyName}
-                />
-                <TextField
-                  className="textfield"
-                  label="Company size"
-                  fullWidth
-                  required
-                  select
-                  variant="outlined"
-                  name="companySize"
-                  value={formValues.companySize}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.companySize)}
-                  helperText={errors.companySize}
-                >
-                  <MenuItem value="Micro (1–10 employees)">
-                    Micro (1–10 employees)
-                  </MenuItem>
-                  <MenuItem value="Small (11–50 employees)">
-                    Small (11–50 employees)
-                  </MenuItem>
-                  <MenuItem value="Medium (51–250 employees)">
-                    Medium (51–250 employees)
-                  </MenuItem>
-                  <MenuItem value="Large (251–1000 employees)">
-                    Large (251–1000 employees)
-                  </MenuItem>
-                  <MenuItem value="Enterprise (1001+ employees)">
-                    Enterprise (1001+ employees)
-                  </MenuItem>
-                </TextField>
-              </Stack>
-              <Stack direction="row" spacing={2}>
-                <TextField
-                  className="textfield"
-                  label="Job title"
-                  fullWidth
-                  required
-                  variant="outlined"
-                  name="jobTitle"
-                  value={formValues.jobTitle}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.jobTitle)}
-                  helperText={errors.jobTitle}
-                />
-                <TextField
-                  className="textfield"
-                  label="Job level"
-                  fullWidth
-                  required
-                  select
-                  variant="outlined"
-                  name="jobLevel"
-                  value={formValues.jobLevel}
-                  onChange={handleInputChange}
-                  error={Boolean(errors.jobLevel)}
-                  helperText={errors.jobLevel}
-                >
-                  <MenuItem value="Junior">Junior</MenuItem>
-                  <MenuItem value="Mid">Mid</MenuItem>
-                  <MenuItem value="Senior">Senior</MenuItem>
-                </TextField>
-              </Stack>
-              <TextField
-                className="textfield"
-                label="Solution needed"
-                fullWidth
-                required
-                variant="outlined"
-                name="solutionNeeded"
-                value={formValues.solutionNeeded}
-                onChange={handleInputChange}
-                error={Boolean(errors.solutionNeeded)}
-                helperText={errors.solutionNeeded}
-              />
+        if (Object.keys(newErrors).length === 0) {
+            console.log("Form Submitted:", formValues);
+            alert("Form submitted successfully!");
+            setFormValues(initialFormValues); // Reset form values
+        }
+    };
 
-              <TextField
-                label="Other specific needs"
-                fullWidth
-                multiline
-                rows={4}
-                variant="outlined"
-                name="otherSpecificNeeds"
-                value={formValues.otherSpecificNeeds}
-                onChange={handleInputChange}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{
-                  backgroundColor: "#0DAFFC",
-                  "&:hover": {
-                    backgroundColor: "#008DCB",
-                  },
-                }}
-              >
-                Submit
-              </Button>
-            </Stack>
-          </Box>
-        </div>
-      </div>
-    </div>
-  );
-});
+    const handleClose = () => {
+        setFormValues(initialFormValues); // Reset form values
+        setErrors({}); // Reset errors
+        onClose(); // Close the modal
+    };
 
-export default ContactUs;
+    return (
+        <Modal open={isOpen} onClose={handleClose}>
+            <Box className="modal__container">
+                <Box className="modal-header">
+                    <Typography variant="h6" className="modal-title">
+                        Contact Us
+                    </Typography>
+                    <IconButton onClick={handleClose} className="close-button">
+                        <CloseIcon />
+                    </IconButton>
+                </Box>
+
+                <Typography className="modal-description">
+                    Please help us by filling the following details to provide you more
+                    information.
+                </Typography>
+
+                <Box component="form" className="form-container" onSubmit={handleSubmit}>
+                    {/* Prepopulated Field */}
+                    
+                  {selectedCard == null ? null : ( <TextField
+                        value={selectedCard || ""}
+                        variant="outlined"
+                        fullWidth
+                        className="form-input"
+                        disabled
+                    />)} 
+
+                    {/* First and Last Name */}
+                    <Box className="name-fields">
+                        <TextField
+                            label="First name"
+                            name="firstName"
+                            variant="outlined"
+                            fullWidth
+                            className="form-input"
+                            value={formValues.firstName}
+                            onChange={handleInputChange}
+                            error={Boolean(errors.firstName)}
+                            helperText={errors.firstName}
+                        />
+                        <TextField
+                            label="Last name"
+                            name="lastName"
+                            variant="outlined"
+                            fullWidth
+                            className="form-input"
+                            value={formValues.lastName}
+                            onChange={handleInputChange}
+                            error={Boolean(errors.lastName)}
+                            helperText={errors.lastName}
+                        />
+                    </Box>
+
+                    {/* Work Email */}
+                    <TextField
+                        label="Work Email"
+                        name="email"
+                        variant="outlined"
+                        fullWidth
+                        className="form-input"
+                        value={formValues.email}
+                        onChange={handleInputChange}
+                        error={Boolean(errors.email)}
+                        helperText={errors.email}
+                    />
+
+                    {/* Company Name */}
+                    <TextField
+                        label="Company name"
+                        name="companyName"
+                        variant="outlined"
+                        fullWidth
+                        className="form-input"
+                        value={formValues.companyName}
+                        onChange={handleInputChange}
+                        error={Boolean(errors.companyName)}
+                        helperText={errors.companyName}
+                    />
+
+                    {/* Country */}
+                    <TextField
+                        label="Country"
+                        name="country"
+                        variant="outlined"
+                        select
+                        fullWidth
+                        className="form-input"
+                        value={formValues.country}
+                        onChange={handleInputChange}
+                        error={Boolean(errors.country)}
+                        helperText={errors.country}
+                    >
+                        <MenuItem value="USA">USA</MenuItem>
+                        <MenuItem value="India">India</MenuItem>
+                        <MenuItem value="Canada">Canada</MenuItem>
+                    </TextField>
+
+                    <TextField
+                        label="Phone number"
+                        name="phoneNumber"
+                        variant="outlined"
+                        fullWidth
+                        className="form-input"
+                        value={formValues.phoneNumber}
+                        onChange={handleInputChange}
+                        error={Boolean(errors.phoneNumber)}
+                        helperText={errors.phoneNumber}
+                    />
+
+                    {/* Message */}
+                    <TextField
+                        label="Message"
+                        name="message"
+                        variant="outlined"
+                        multiline
+                        rows={3}
+                        fullWidth
+                        value={formValues.message}
+                        onChange={handleInputChange}
+                    />
+
+                    {/* Submit Button */}
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        fullWidth
+                        sx={{ backgroundColor: "#0DAFFC", marginTop: "1rem" }}
+                    >
+                        Submit
+                    </Button>
+                </Box>
+            </Box>
+        </Modal>
+    );
+};
+
+export default ContactUsModal;

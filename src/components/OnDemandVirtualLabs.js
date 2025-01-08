@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import "./OnDemandVirtualLabs.css";
 import OnDemandVirtualLabs_1 from "../assests/images/OnDemandVirtualLabs_1.png";
-import icon from "../assests/images/sandbox_icon.png"
+import icon from "../assests/images/sandbox_icon.png";
+import ContactUsLabs from "./ContactUsLabs"; // Import the ContactFormModal component
 
 function OnDemandVirtualLabs() {
+  const [selectedCard, setSelectedCard] = useState(""); // State to store the selected card name
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const data = [
     {
@@ -33,7 +36,18 @@ function OnDemandVirtualLabs() {
     },
   ];
 
-  
+  // Handle modal open and set the selected card
+  const handleOpenModal = (title) => {
+    setSelectedCard(title);
+    setIsModalOpen(true);
+  };
+
+  // Handle modal close
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedCard("");
+  };
+
   return (
     <Box className="virtual-labs-container">
       {/* Section 1 */}
@@ -74,31 +88,44 @@ function OnDemandVirtualLabs() {
       </Box>
 
       {/* Section 3 */}
-<Box className="virtual-labs-sandbox-section">
-      <Typography variant="h4" className="section-title">
-        Sandboxes for your custom needs
-      </Typography>
-      <Box className="grid-container">
-        {data.map((item, index) => (
-          <Box key={index} className="grid-item">
-            <img
-              src={icon} // Replace this with your cube icon path
-              alt="Sandbox Icon"
-              className="icon"
-            />
-            <Typography variant="h6" className="grid-title">
-              {item.title}
-            </Typography>
-            <Typography variant="body2" className="grid-description">
-              {item.description}
-            </Typography>
-            <Button variant="contained" className="contact-button">
-              Contact us
-            </Button>
-          </Box>
-        ))}
+      <Box className="virtual-labs-sandbox-section">
+        <Typography variant="h4" className="section-title">
+          Sandboxes for your custom needs
+        </Typography>
+        <Box className="grid-container">
+          {data.map((item, index) => (
+            <Box key={index} className="grid-item">
+              <img
+                src={icon} // Replace this with your cube icon path
+                alt="Sandbox Icon"
+                className="icon"
+              />
+              <Typography variant="h6" className="grid-title">
+                {item.title}
+              </Typography>
+              <Typography variant="body2" className="grid-description">
+                {item.description}
+              </Typography>
+              <Button
+                variant="contained"
+                className="contact-button"
+                onClick={() => handleOpenModal(item.title)} // Open modal with card title
+              >
+                Contact us
+              </Button>
+            </Box>
+          ))}
+        </Box>
       </Box>
-    </Box>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <ContactUsLabs
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          selectedCard={selectedCard} // Pass the selected card title
+        />
+      )}
     </Box>
   );
 }

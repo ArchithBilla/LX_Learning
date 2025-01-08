@@ -3,9 +3,22 @@ import { Box, Typography, Button } from "@mui/material";
 import "./HumanCapitalSolutions.css";
 import AlignAssess_Image from "../assests/images/AlignAssess_Image.png";
 import Assess_Image from "../assests/images/Assess_Image.png";
+import HumanCapitalSolutionsEmpower from "../assests/images/HumanCapitalSolutionsEmpower.png"
+import ContactUs from "./contactUs";
+
 
 function HumanCapitalSolutions() {
   const [activeButton, setActiveButton] = useState("align");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
 
   return (
     <>
@@ -29,17 +42,15 @@ function HumanCapitalSolutions() {
       {/* Section 3 */}
       <Box className="button-container">
         <Button
-          className={`custom-button ${
-            activeButton === "align" ? "active" : ""
-          }`}
+          className={`custom-button ${activeButton === "align" ? "active" : ""
+            }`}
           onClick={() => setActiveButton("align")}
         >
           Align & Assess
         </Button>
         <Button
-          className={`custom-button ${
-            activeButton === "empower" ? "active" : ""
-          }`}
+          className={`custom-button ${activeButton === "empower" ? "active" : ""
+            }`}
           onClick={() => setActiveButton("empower")}
         >
           Empower & Develop
@@ -63,19 +74,7 @@ function HumanCapitalSolutions() {
               className="section-image"
             />
           </Box>
-        </Box>
-      ) : (
-        <Box className="placeholder-section">
-          <Typography variant="h4" className="section-heading">
-            Empower & Develop Section
-          </Typography>
-          <Typography variant="body1">
-            Placeholder content for the Empower & Develop section.
-          </Typography>
-        </Box>
-      )}
-      
-      <Box className="industries-section">
+          <Box className="industries-section">
         <Typography variant="h4" className="industries-heading">
           Industries We Empower:
         </Typography>
@@ -97,6 +96,19 @@ function HumanCapitalSolutions() {
           ))}
         </Box>
       </Box>
+        </Box>
+        
+      ) : (
+        <Box className="Empower-section">
+          <img
+              src={HumanCapitalSolutionsEmpower}
+              alt="Align & Assess"
+              className="Empower-section-image"
+            />
+        </Box>
+      )}
+
+     
 
       {/* Section 5 */}
       <Box className="why-choose-us-section">
@@ -116,11 +128,18 @@ function HumanCapitalSolutions() {
             your team performance.
           </Typography>
           <Box className="cta-button-container">
-            <Button variant="contained" className="cta-button">
+            <Button variant="contained" className="cta-button" onClick={() => handleModalOpen()}
+            >
               Talk to us
             </Button>
           </Box>
         </Box>
+        <ContactUs
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          selectedCard={null}
+
+        />
       </Box>
     </>
   );

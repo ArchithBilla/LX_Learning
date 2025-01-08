@@ -43,6 +43,8 @@
     background: none;
     border: none;
     cursor: pointer;
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 600 !important;
   }
   
 
