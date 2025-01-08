@@ -9,6 +9,7 @@ import {
     Card,
     CardContent,
     CardActions,
+    Pagination
 } from "@mui/material";
 import InstructorLedTraining from "../assests/images/industryLedTraining.png";
 import { useLocation } from "react-router-dom";
@@ -30,6 +31,8 @@ function InstructorLedTrainings() {
     const [showCertifications, setShowCertifications] = useState(true);
     const [showTrainings, setShowTrainings] = useState(false);
     const [fullCourses, setFullCourses] = useState([])
+    const [currentPage, setCurrentPage] = useState(1); // For pagination
+    const itemsPerPage = 10; // Number of courses per page
 
     const location = useLocation(); // Access global search data
 
@@ -38,59 +41,48 @@ function InstructorLedTrainings() {
             try {
                 const response = await fetch("/courses.json");
                 const data = await response.json();
-
-                setFullCourses(data)
+    
+                setFullCourses(data);
+    
                 // Extract all unique categories
                 const uniqueCategories = new Set(
                     data.map((course) => course["Main - Category"])
                 );
                 const categoryArray = Array.from(uniqueCategories);
                 setCategories(categoryArray);
-
-                // If search data exists in location.state, use it
+    
                 if (location.state && location.state.searchedData) {
                     const { searchedData, searchTerm } = location.state;
-
-                    // setCourses(searchedData); // Populate courses with filtered data
-                    setFilteredCourses(searchedData); // Show filtered courses
-                    setSearchValue(searchTerm); // Reflect search term in local search bar
-
-                    // Update categories to highlight based on search data
-                    // const searchedCategories = new Set(
-                    //     searchedData.map((course) => course["Main - Category"])
-                    // );
-                    // setSelectedCategories(Array.from(searchedCategories)); // Highlight relevant categories
-
-                    // Update partners for filtered courses
+                    setFilteredCourses(searchedData);
+                    setSearchValue(searchTerm);
                     const filteredPartners = Array.from(
                         new Set(searchedData.map((course) => course.Partner))
                     );
                     setAvailablePartners(filteredPartners);
                 } else {
-                    // Otherwise, set courses to all data
-                    // setCourses(data);
-
                     if (categoryArray.length > 0) {
-                        // Automatically select the first category
                         const firstCategory = categoryArray[0];
-                        setSelectedCategories([firstCategory]); // Set the first category as selected
+                        setSelectedCategories([firstCategory]);
                         const filtered = data.filter(
                             (course) => course["Main - Category"] === firstCategory
                         );
-                        setFilteredCourses(filtered); // Filter the courses for the first category
+                        setFilteredCourses(filtered);
                         const partners = Array.from(
                             new Set(filtered.map((course) => course.Partner))
                         );
-                        setAvailablePartners(partners); // Update available partners
+                        setAvailablePartners(partners);
                     } else {
                         setFilteredCourses(data);
                     }
                 }
+    
+                // Automatically set current page to 1 if there is only one page of results
+               
             } catch (error) {
                 console.error("Error fetching courses data:", error);
             }
         };
-
+    
         fetchData();
     }, [location.state]);
 
@@ -112,6 +104,11 @@ function InstructorLedTrainings() {
             const filtered = fullCourses.filter((course) =>
                 updatedCategories.includes(course["Main - Category"])
             );
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            console.log(totalPages)
+            if (totalPages === 1) {
+                setCurrentPage(1);
+            }
             setFilteredCourses(filtered);
             setAvailablePartners(
                 Array.from(new Set(filtered.map((course) => course.Partner)))
@@ -180,7 +177,11 @@ function InstructorLedTrainings() {
         if (!showTrainings && course.Objective !== "Certification") return false;
         return true;
     });
-    
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedCourses = displayedCourses.slice(startIndex, endIndex);
+
 
     return (
         <Box sx={{ width: "100%", p: 2 }}>
@@ -308,7 +309,7 @@ function InstructorLedTrainings() {
                         {displayedCourses.length} Results found
                     </Typography>
                     <Box className="courses-grid">
-                        {displayedCourses.map((course, index) => (
+                        {paginatedCourses.map((course, index) => (
                             <Card key={index} className="course-card">
                                 <CardContent>
                                     {/* Partner Logo */}
@@ -365,13 +366,22 @@ function InstructorLedTrainings() {
                                     >
                                         Contact us
                                     </Button>
-
                                 </CardActions>
                             </Card>
                         ))}
+
                     </Box>
                 </Box>
+                
+
             </Box>
+            <Pagination
+                    count={Math.ceil(displayedCourses.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={(event, value) => setCurrentPage(value)}
+                    color="primary"
+                    sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+                />
             <ContactUsModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)} // Close the modal

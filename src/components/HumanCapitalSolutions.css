@@ -140,14 +140,14 @@
     text-align: left;
     max-width: 800px;
     margin: 1% auto;
-    width: 50% !important;
+    width: 100% !important;
     }
   
   .section-heading {
-    font-size: 28px !important;
-    font-weight: 500 !important;
+    font-size: 20px !important;
     margin-bottom: 20px;
     font-family: "Nunito", sans-serif !important;
+    font-weight: 700 !important;
   }
   
   .benefits-list {
@@ -157,19 +157,23 @@
     justify-content:flex-start !important;
     margin :1% 0.1% !important;
     color: #333;
+    width: 1000px !important;
+
   }
   
   .benefits-list li {
-    font-size: 18px;
+    font-size: 16px !important;
+    font-family: "Nunito", sans-serif !important;
     margin-bottom: 10px;
-    line-height: 0.8;
+    line-height: 1.2;
   }
   
   .cta-text {
-    color: #0056c3;
-    font-size: 14px !important;
+    color: #0056C3;
+    font-family: "Nunito", sans-serif !important;
+    font-size: 16px !important;
     margin-bottom: 1% !important;
-    font-weight: bold !important;
+    font-weight: 700 !important;
   }
   
 

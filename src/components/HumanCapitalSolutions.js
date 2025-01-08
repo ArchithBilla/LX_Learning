@@ -59,6 +59,7 @@ function HumanCapitalSolutions() {
 
       {/* Conditional Rendering for Section 4 */}
       {activeButton === "align" ? (
+        <>
         <Box className="image-section">
           <Box className="align-assess-img">
             <img
@@ -97,8 +98,40 @@ function HumanCapitalSolutions() {
         </Box>
       </Box>
         </Box>
+         <Box className="why-choose-us-section">
+         <Box className="content-box">
+           <Typography variant="h4" className="section-heading">
+             Why Choose Us?
+           </Typography>
+           <ul className="benefits-list">
+             <li>Proven results across diverse industries.</li>
+             <li>
+               Tools designed to integrate seamlessly with your current systems.
+             </li>
+             <li>Customizable solutions to match your organizational needs.</li>
+           </ul>
+           <Typography variant="body1" className="cta-text">
+             Discover how our tailored OKR and Assessment solutions can elevate
+             your team performance.
+           </Typography>
+           <Box className="cta-button-container">
+             <Button variant="contained" className="cta-button" onClick={() => handleModalOpen()}
+             >
+               Talk to us
+             </Button>
+           </Box>
+         </Box>
+         <ContactUs
+           isOpen={isModalOpen}
+           onClose={handleModalClose}
+           selectedCard={null}
+ 
+         />
+       </Box>
+       </>
         
       ) : (
+        <>
         <Box className="Empower-section">
           <img
               src={HumanCapitalSolutionsEmpower}
@@ -106,41 +139,48 @@ function HumanCapitalSolutions() {
               className="Empower-section-image"
             />
         </Box>
-      )}
-
-     
-
-      {/* Section 5 */}
-      <Box className="why-choose-us-section">
+        <Box className="why-choose-us-section">
         <Box className="content-box">
           <Typography variant="h4" className="section-heading">
             Why Choose Us?
           </Typography>
           <ul className="benefits-list">
-            <li>Proven results across diverse industries.</li>
             <li>
-              Tools designed to integrate seamlessly with your current systems.
+              <strong>Holistic Development:</strong> Programs designed to empower employees at all levels, from entry-level talent to C-suite executives.
             </li>
-            <li>Customizable solutions to match your organizational needs.</li>
+            <li>
+              <strong>Tailored Approach:</strong> Customized interventions that address unique organizational and individual needs.
+            </li>
+            <li>
+              <strong>Strategic Growth:</strong> Alignment of development goals with business priorities for measurable outcomes.
+            </li>
+            <li>
+              <strong>Comprehensive Offerings:</strong> Leadership coaching, technical skill enhancement, and behavioral training all in one place.
+            </li>
+            <li>
+              <strong>Expert-Driven:</strong> Leverage insights from seasoned mentors and globally recognized certification programs.
+            </li>
           </ul>
           <Typography variant="body1" className="cta-text">
-            Discover how our tailored OKR and Assessment solutions can elevate
-            your team performance.
+            <span style={{ color: "#007FFF", cursor: "pointer" }}>
+              Empower your workforce today—start your journey with us!
+            </span>
           </Typography>
           <Box className="cta-button-container">
-            <Button variant="contained" className="cta-button" onClick={() => handleModalOpen()}
-            >
+            <Button variant="contained" className="cta-button" onClick={() => handleModalOpen()}>
               Talk to us
             </Button>
           </Box>
         </Box>
-        <ContactUs
-          isOpen={isModalOpen}
-          onClose={handleModalClose}
-          selectedCard={null}
-
-        />
+        <ContactUs isOpen={isModalOpen} onClose={handleModalClose} selectedCard={null} />
       </Box>
+</>      
+      )}
+
+     
+
+      {/* Section 5 */}
+     
     </>
   );
 }
