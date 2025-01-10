@@ -11,16 +11,16 @@
     margin-left:3%
   }
   
-  .contact-us-text {
+  .get-in-touch-text {
     flex: 1;
     min-width: 300px;
     color: #F1F1F1;
     font-weight: 500;
     font-size: 16px;
-    margin-left:  4%;
+    margin-left:  7%;
   }
   
-  .contact-us-text h4 {
+  .get-in-touch-text h4 {
     font-size: 1.8rem;
     color: #82DCFF;
     font-weight: 700;
@@ -30,34 +30,37 @@
     
   }
   
-  .contact-us-text p{
+  .get-in-touch-text p{
     font-weight: 900 !important;
   }
-  .contact-us-text ul {
+  .get-in-touch-text ul {
     list-style-type: none;
     padding: 0;
   }
   
-  .contact-us-text li {
+  .get-in-touch-text li {
     margin: 0.5rem 0;
     font-size: 1rem;
     line-height: 1.5;
   }
   
-  .contact-us-form {
+  .get-in-touch-form {
     flex: 1;
     min-width: 300px;
     padding: 1.5rem;
     border-radius: 8px;
+    margin-right: 5% !important;
   }
 
   .MuiInputBase-root {
     background-color: white;
+
 }
   
 .textfield .MuiOutlinedInput-root {
     height: 45px !important; /* Set the desired height */
     align-items: center; /* Align content properly */
+
   }
   
 .form-heading{

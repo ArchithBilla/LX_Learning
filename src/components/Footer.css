@@ -36,16 +36,7 @@
     justify-content: center;
   }
   
-  .footer-contact-title {
 
-font-weight:200 !important; 
-    margin-bottom: 0.5rem;
-    color: #F1F1F1;
-    font-size: 20px;
-    font-family: "Rounded Mplus 1c" !important
-
-
-  }
   
   .footer-contact-text {
     font-size: 1rem;
@@ -61,10 +52,36 @@ font-weight:200 !important;
   }
   
   .footer-disclaimer-text {
-    font-size: 12px;
+    font-size: 13px !important;
     line-height: 1.5;
-    color: #00243C;
+    color: #00243C !important;
     font-weight: 400 !important;
-    font-family:" Rounded Mplus 1c" !important   ;
+    font-family: 'Rounded Mplus 1c' !important;
+    line-height: 17.82px !important;
+    width: 962px    !important;
+    margin-left: 8% !important;
   }
   
+
+  .contact-us-text{
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+  }
+
+  .contact-us-details{
+    font-family: 'Rounded Mplus 1c' !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  color:#F1F1F1 !important;
+  }
+
+  .license-text{
+    margin-left: -80% !important;
+    color: #868686 !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    margin-bottom: 1.5% !important;
+    font-family: 'Rounded Mplus 1c' !important;
+
+  }

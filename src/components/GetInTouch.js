@@ -89,7 +89,7 @@ const GetInTouch = forwardRef((props, ref) => {
     <div ref={ref}>
       <h1 className="form-heading">Get in touch</h1>
       <div className="contact-us-container">
-        <div className="contact-us-text">
+        <div className="get-in-touch-text">
           <h4>Partner with LX Learning to empower your workforce with:</h4>
           <ul>
             <li>
@@ -122,7 +122,7 @@ const GetInTouch = forwardRef((props, ref) => {
 
         </div>
 
-        <div className="contact-us-form">
+        <div className="get-in-touch-form">
           <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Stack spacing={2}>
               <Stack direction="row" spacing={2}>
@@ -295,7 +295,7 @@ const GetInTouch = forwardRef((props, ref) => {
                   },
                 }}
               >
-                Submit
+                <span style={{fontWeight:"400"}}>Submit</span>
               </Button>
             </Stack>
           </Box>

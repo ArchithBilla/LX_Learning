@@ -104,13 +104,13 @@
     left: 4% !important; /* Space from the left */
     right: 4% !important; /* Space from the right */
     z-index: 1200 !important; /* Ensure header is on top */
-    background-color: rgba(255, 255, 255, 0.9) !important; /* Slightly transparent background */
-    border-radius: 5px !important; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; /* Subtle shadow */
-    padding: 8px 24px !important;
+    background-color: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent white background */
+    padding: 8px 24px !important; /* Inner spacing */
+    box-shadow: none !important; /* Remove box shadow completely */
     color: #333333 !important; /* Text color */
-    width: 91% !important;
+    width: 91% !important; /* Width of the header */
 }
+
 
 
   /* Search bar */

@@ -105,8 +105,7 @@ function Home() {
               />
               <Button
                 variant="contained"
-                color="primary"
-                className="centered-button"
+                className="centered-button-Human-Capital-Solutions"
                 onClick={handleButtonClick} // Call handleButtonClick on click
                 sx={{ backgroundColor: "#0DAFFC" }}
               >
@@ -132,8 +131,9 @@ function Home() {
                 className="content-body"
                 sx={{
                   fontFamily: '"Nunito", sans-serif',
-                  fontWeight: "800 !important", // Increase fontWeight here
+                  fontWeight: "700", // Increase fontWeight here
                   marginBottom: "1rem",
+                  fontSize:"18px !important"
                 }}
               >
                 {contentMap[activeButton].description}
@@ -141,7 +141,10 @@ function Home() {
 
               <Typography variant="h6" sx={{
                 fontFamily: '"Nunito", sans-serif',
-                fontWeight: "var(--fontWeight-nunito-regular)",
+                fontWeight: "400",
+                fontSize:"18px",
+                marginBottom: "-2.5%",
+                color:"#343434"
               }}>
                 Benefits:
               </Typography>
@@ -157,6 +160,8 @@ function Home() {
                         paddingLeft: "5px",
                         paddingBottom: "0px",
                         paddingTop: "0px",
+                        marginLeft:"5%",
+
                       }}
                     >
                       <ListItemText
@@ -164,8 +169,9 @@ function Home() {
                           <Typography component="span" sx={{
                             fontFamily: '"Nunito", sans-serif',
                             fontWeight: "300",
+                            color:"#343434 !important"
                           }}>
-                            <strong>{boldText}:</strong> {restText.join(":")}
+                            <strong >{boldText}:</strong> {restText.join(":")}
                           </Typography>
                         }
                       />
@@ -173,10 +179,20 @@ function Home() {
                   );
                 })}
               </List>
+              <Typography 
+              sx={{
+                fontFamily: '"Nunito", sans-serif',
+                fontWeight: "400",
+                fontSize:"18px",
+                color:"#343434",
+                marginBottom:"5%"
+              }}
+              >
+                Incorporating ILT/VLT/Blended can enhance employee development and organizational performance.
+                </Typography>
               <Button
                 variant="contained"
-                color="primary"
-                sx={{  backgroundColor: "#0DAFFC", width:'300px', fontWeight:400, textTransform:"none"}}
+                sx={{  backgroundColor: "#0DAFFC", width:'300px', fontWeight:"400 !important", textTransform:"none", marginBottom:"15%", color:"#EEFAFF !important"}}
                 onClick={handleButtonClick} // Call handleButtonClick on click
 
               >
@@ -203,11 +219,12 @@ function Home() {
                 className="content-body"
                 sx={{
                   fontFamily: '"Nunito", sans-serif',
-                  fontWeight: "",
+                  fontWeight: "700 !important",
                   fontSize: "18px",
                   marginBottom: "1.5rem",
                   lineHeight: "1.6",
-                  color: "#333", // Neutral dark text color
+                  color: "#333", // Neutral dark text colorss
+
                 }}
               >
                 {contentMap[activeButton].description}
@@ -218,11 +235,12 @@ function Home() {
                 sx={{
                   backgroundColor: "#0DAFFC", // Button color
                   fontFamily: '"Nunito", sans-serif',
-                  fontWeight: 500,
+                  fontWeight: "400",
                   fontSize: "16px",
                   textTransform: "none",
                   borderRadius: "5px",
                   boxShadow: "none",
+                  color:"#EEFAFF"
                 }}
               >
                 {contentMap[activeButton].buttonLabel}
@@ -230,7 +248,7 @@ function Home() {
             </Box>
         
             {/* Right Section: Image */}
-            <Box className="image-section">
+            <Box className="image-section-learning-environments">
               <img
                 src={contentMap[activeButton].image}
                 alt={contentMap[activeButton].heading}

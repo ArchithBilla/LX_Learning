@@ -43,18 +43,18 @@ html, body {
     align-items: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    padding: 0 !important;
     margin-top: 2% !important;
 }
 
 .button-container {
     display: flex !important;
-    gap:10px;
-    align-items: center !important;
+    gap:16px !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
     width: 100% !important; /* Take full width */
-    max-width: 1200px !important; /* Optional: limit width for larger screens */
+    max-width: 1200px !important; 
     box-sizing: border-box !important;
-    margin: 0px 38px;
+    margin-left: -0.6% !important;
 }
 
 .button-card {
@@ -64,11 +64,10 @@ html, body {
     border-radius: 10px !important;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
     text-align: center !important;
-    padding: 15px !important;
     background-color: #F1F1F1 !important;
     color: #0056C3 !important;
     border: none !important; /* Remove the border */
-    width: 33% !important;
+    width: 378px  !important;
     height: 75px !important;
 
 }
@@ -93,7 +92,6 @@ html, body {
 .content-section {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 400px; /* Set a fixed minimum height for consistency */
     box-sizing: border-box !important;
   }
@@ -106,6 +104,7 @@ html, body {
     height: 100%; /* Ensure the container fills the height */
     align-items: center; /* Center content vertically */
     padding-top: 20px !important;
+    margin-left: -3% !important;
   }
   
   /* Text Section */
@@ -125,11 +124,21 @@ html, body {
   .image-section {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start !important;
+    align-items:flex-start !important;
     height: 100%; /* Ensure image section fills the height */
+    padding: 1rem;
+    margin-top: -24% !important;
+
   }
   
+
+  .image-section-learning-environments{
+    margin-top: -5%;
+    height: 100%; /* Ensure image section fills the height */
+    padding: 1rem;
+    margin-bottom: 10%;
+  }
   .single-image-container {
     height: 100%;
     display: flex;
@@ -155,13 +164,18 @@ html, body {
   }
   
   /* Button styling */
-  .centered-button {
+  .centered-button-Human-Capital-Solutions {
     text-transform: none;
-    margin-top: -105px !important;
+    margin-top: -165px !important;
+    margin-bottom: 8% !important;
     color: white !important;
     border: none !important;
     font-size: 16px;
     border-radius: 5px;
+    width: 130px !important;
+    font-weight: 400 !important;
+    height: 38px !important;
+    color: #EEFAFF !important;
   }
 
   /* Image styling for two-column layout */
@@ -187,11 +201,7 @@ html, body {
     padding: 1rem;
   }
   
-  .image-section {
-    flex: 1;
-    padding: 1rem;
-  }
-  
+
   .responsive-image {
     max-width: 100%;
     height: auto;
