@@ -4,6 +4,7 @@ import "./HumanCapitalSolutions.css";
 import AlignAssess_Image from "../assests/images/AlignAssess_Image.png";
 import Assess_Image from "../assests/images/Assess_Image.png";
 import HumanCapitalSolutionsEmpower from "../assests/images/HumanCapitalSolutionsEmpower.png"
+import EmpowerDevelop from "../assests/images/Empower&Devolop.png"
 import ContactUs from "./contactUs";
 
 
@@ -24,14 +25,6 @@ function HumanCapitalSolutions() {
     <>
       {/* Fullscreen Image Section */}
       <Box className="fullscreen-image">
-        <Box className="floating-text">
-          <Typography variant="p" className="floating-title">
-            Capability Building to
-          </Typography>
-          <Typography variant="h2" className="floating-subtitle">
-            Empower Organizations
-          </Typography>
-        </Box>
       </Box>
 
       {/* Section 2 */}
@@ -40,7 +33,7 @@ function HumanCapitalSolutions() {
       </Box>
 
       {/* Section 3 */}
-      <Box className="button-container">
+      <Box className="button-container-humanCapital">
         <Button
           className={`custom-button ${activeButton === "align" ? "active" : ""
             }`}
@@ -60,7 +53,7 @@ function HumanCapitalSolutions() {
       {/* Conditional Rendering for Section 4 */}
       {activeButton === "align" ? (
         <>
-        <Box className="image-section">
+        <Box className="image-section-HumanCapital">
           <Box className="align-assess-img">
             <img
               src={AlignAssess_Image}
@@ -133,6 +126,11 @@ function HumanCapitalSolutions() {
       ) : (
         <>
         <Box className="Empower-section">
+        <img
+              src={EmpowerDevelop}
+              alt="Align & Assess"
+              className="EmpowerDevelop-section-image"
+            />
           <img
               src={HumanCapitalSolutionsEmpower}
               alt="Align & Assess"
