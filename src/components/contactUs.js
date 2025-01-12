@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./contactUs.css";
+import emailjs from "emailjs-com";
+
 
 const ContactUsModal = ({ isOpen, onClose, selectedCard = false }) => {
     const initialFormValues = {
@@ -68,25 +70,58 @@ const ContactUsModal = ({ isOpen, onClose, selectedCard = false }) => {
         }
     };
 
+
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+    
         const newErrors = {};
         Object.keys(formValues).forEach((key) => {
             if (!formValues[key].trim() && key !== "message") {
                 newErrors[key] = "This field is required";
             }
         });
-
+    
         setErrors(newErrors);
-
+    
         if (Object.keys(newErrors).length === 0) {
-            console.log("Form Submitted:", formValues);
-            alert("Form submitted successfully!");
-            setFormValues(initialFormValues); // Reset form values
+            // Construct emailParams including selectedCard if it's available
+            const emailParams = {
+                from_name: `${formValues.firstName} ${formValues.lastName}`,
+                from_email: formValues.email,
+                company_name: formValues.companyName,
+                country: formValues.country,
+                phone_number: formValues.phoneNumber,
+                message: formValues.message || "No additional message provided.",
+                selected_card: selectedCard || "N/A", // Default to 'N/A' if not provided
+                form_type: "Contact Us", // Add the form type here
+
+            };
+            
+    console.log(emailParams)
+            emailjs
+                .send(
+                    "service_hgkcxrq", // Your EmailJS Service ID
+                    "template_9ucywzj", // Your EmailJS Template ID
+                    emailParams,
+                    "kHDcuQ_-7ij2FZ2hf" // Your EmailJS Public Key
+                )
+                .then(
+                    (response) => {
+                        console.log("Email sent successfully:", response.status, response.text);
+                        alert("Form submitted successfully!");
+                        setFormValues(initialFormValues); // Reset form values
+                    },
+                    (error) => {
+                        console.error("Failed to send email:", error);
+                        alert("Failed to send the form. Please try again later.");
+                    }
+                );
         }
     };
-
+    
+    
     const handleClose = () => {
         setFormValues(initialFormValues); // Reset form values
         setErrors({}); // Reset errors

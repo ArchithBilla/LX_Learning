@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%); /* Centers the modal */
     width: 644px; /* Fixed width */
-    height: 99vh;
+    height: 90vh;
     background-color: #223D4B; /* Modal background */
     border-radius: 10px; /* Rounded corners */
     padding: 15px; /* Consistent padding around the modal */
@@ -12,7 +12,6 @@
     flex-direction: column;
     justify-content: space-between; /* Ensures even spacing between elements */
     box-sizing: border-box; /* Includes padding in width/height calculation */
-    overflow-y: scroll;
   }
   
   .modal-header {
@@ -64,7 +63,7 @@
   .form-input .MuiInputBase-root {
     background-color: #ffffff;
     border-radius: 5px;
-    height: 38px; /* Uniform height for input fields */
+    height: 36px; /* Uniform height for input fields */
   }
   
   .form-input .MuiInputLabel-root {

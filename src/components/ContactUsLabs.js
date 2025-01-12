@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./ContactUsLabs.css";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 const ContactFormModal = ({ isOpen, onClose, selectedCard }) => {
   const initialFormValues = {
@@ -81,12 +82,46 @@ const ContactFormModal = ({ isOpen, onClose, selectedCard }) => {
       }
     });
 
+    console.log(newErrors)
+
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form Submitted:", formValues);
-      alert("Form submitted successfully!");
-      setFormValues(initialFormValues); // Reset form values
+      // Construct emailParams including selectedCard if it's available
+      const emailParams = {
+        from_name: `${formValues.firstName} ${formValues.lastName}`,
+        from_email: formValues.email,
+        company_name: formValues.companyName,
+        country: formValues.country,
+        phone_number: formValues.phoneNumber,
+        skill_or_competency: formValues.skillOrCompetency || "N/A",
+        duration: formValues.duration || "N/A",
+        number_of_users: formValues.numberOfUsers || "N/A",
+        message: formValues.message || "No additional message provided.",
+        selected_card: selectedCard || "N/A", // Add selectedCard or default to 'N/A'
+        form_type: "Contact US - Virtual Labs", // Add the form type here
+
+      };
+
+
+      emailjs
+        .send(
+          "service_hgkcxrq", // Your EmailJS Service ID
+          "template_mskt8uf", // Your EmailJS Template ID
+          emailParams,
+          "kHDcuQ_-7ij2FZ2hf" // Your EmailJS Public Key
+        )
+        .then(
+          (response) => {
+            console.log("Email sent successfully:", response.status, response.text);
+            alert("Form submitted successfully!");
+            setFormValues(initialFormValues); // Reset form values
+          },
+          (error) => {
+            console.error("Failed to send email:", error);
+            alert("Failed to send the form. Please try again later.");
+          }
+        );
     }
   };
 
@@ -109,13 +144,16 @@ const ContactFormModal = ({ isOpen, onClose, selectedCard }) => {
 
         <Box component="form" className="form-container" onSubmit={handleSubmit}>
           {/* Prepopulated Field */}
-          <TextField
-            value={selectedCard || ""}
-            variant="outlined"
-            fullWidth
-            className="form-input"
-            disabled
-          />
+          {selectedCard ? (
+            <TextField
+              label="Selected Card"
+              value={selectedCard || ""}
+              variant="outlined"
+              fullWidth
+              className="form-input"
+              disabled
+            />
+          ) : null}
 
           {/* First and Last Name */}
           <Box className="name-fields">
@@ -186,19 +224,18 @@ const ContactFormModal = ({ isOpen, onClose, selectedCard }) => {
             <MenuItem value="India">India</MenuItem>
             <MenuItem value="Canada">Canada</MenuItem>
           </TextField>
-
-          {/* Phone Number */}
-          <TextField
-            label="Phone number"
-            name="phoneNumber"
-            variant="outlined"
-            fullWidth
-            className="form-input"
-            value={formValues.phoneNumber}
-            onChange={handleInputChange}
-            error={Boolean(errors.phoneNumber)}
-            helperText={errors.phoneNumber}
-          />
+{/* Phone Number */}
+<TextField
+  label="Phone Number"
+  name="phoneNumber"
+  variant="outlined"
+  fullWidth
+  className="form-input"
+  value={formValues.phoneNumber}
+  onChange={handleInputChange}
+  error={Boolean(errors.phoneNumber)}
+  helperText={errors.phoneNumber}
+/>
 
           {/* Skill or Competencies */}
           <TextField
@@ -260,7 +297,6 @@ const ContactFormModal = ({ isOpen, onClose, selectedCard }) => {
             name="message"
             variant="outlined"
             multiline
-            rows={3}
             fullWidth
             value={formValues.message}
             onChange={handleInputChange}

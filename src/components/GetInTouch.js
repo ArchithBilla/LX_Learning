@@ -1,6 +1,7 @@
 import React, { useState, forwardRef } from "react";
 import { TextField, Button, MenuItem, Box, Stack } from "@mui/material";
 import "./GetInTouch.css";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 // Wrap the GetInTouch component with React.forwardRef
 const GetInTouch = forwardRef((props, ref) => {
@@ -77,11 +78,42 @@ const GetInTouch = forwardRef((props, ref) => {
       }
     });
     setErrors(newErrors);
-
+    console.log(formValues.phoneNumber)
+    console.log(formValues)
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form Data:", formValues);
-      alert(JSON.stringify(formValues, null, 2));
-      setFormValues(initialFormValues);
+      const emailParams = {
+        from_name: `${formValues.firstName} ${formValues.lastName}`,
+        from_email: formValues.email,
+        phone_number: formValues.phoneNumber,
+        location: formValues.location,
+        company_name: formValues.companyName,
+        company_size: formValues.companySize || "N/A",
+        job_title: formValues.jobTitle,
+        job_level: formValues.jobLevel || "N/A",
+        solution_needed: formValues.solutionNeeded,
+        message: formValues.otherSpecificNeeds || "N/A",
+        form_type: "Get In Touch Form", // Add the form type here
+        selected_card : "N/A"
+      };
+  
+      emailjs
+        .send(
+          "service_hgkcxrq", // Your EmailJS Service ID
+          "template_9ucywzj", // Your EmailJS Template ID
+          emailParams,
+          "kHDcuQ_-7ij2FZ2hf" // Your EmailJS Public Key
+        )
+        .then(
+          (response) => {
+            console.log("Email sent successfully:", response.status, response.text);
+            alert("Form submitted successfully!");
+            setFormValues(initialFormValues); // Reset form values
+          },
+          (error) => {
+            console.error("Failed to send email:", error);
+            alert("Failed to send the form. Please try again later.");
+          }
+        );
     }
   };
 
