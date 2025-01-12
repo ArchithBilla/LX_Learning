@@ -20,7 +20,7 @@
   .footer-image {
     height: 250px;
     width: 100%;
-    background-image: url("../assests//images/Footer.png");
+    background-image: url("../assests//images/footer.gif");
     background-size: cover;
     background-position: center;
   }
@@ -44,7 +44,6 @@
   
   /* Disclaimer Section */
   .footer-disclaimer-section {
-    width: 80%;
     text-align: center;
     background-color: #ffffff;
     border-radius: 4px;
@@ -52,14 +51,12 @@
   }
   
   .footer-disclaimer-text {
-    font-size: 13px !important;
-    line-height: 1.5;
+    font-size: 11px !important;
+    line-height: 1 !important;
     color: #00243C !important;
     font-weight: 400 !important;
     font-family: 'Rounded Mplus 1c' !important;
     line-height: 17.82px !important;
-    width: 962px    !important;
-    margin-left: 8% !important;
   }
   
 
